@@ -68,6 +68,9 @@
     <title>Student Results</title>
     <link rel="stylesheet" href="Student-Results.css">
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="forms.css">
+    <link rel="stylesheet" href="globa;.css">
+
 </head>
 <body>
 
@@ -99,7 +102,7 @@
                                     <img src="./public/logo_nust_png.png" alt="NUST Logo" id="nust-logo">
                                 </th>
 
-                                <th>
+                                <th id="th1">
                                     <table>
                                         <tr>
                                             <td>National ID : <?php echo $current_national_id; ?></td>
@@ -127,7 +130,7 @@
                                     </table>
                                 </th>
 
-                                <th>
+                                <th id="th1">
                                     <table>
 
                                         <tr>

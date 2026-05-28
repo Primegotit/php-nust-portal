@@ -78,13 +78,13 @@
         <div id="header-things">
 
             <div id="left-top-container">
-                <button onclick="toggleAside()">
+                <button onclick="toggleAside()">show menu <
                     <i class="fa fa-bars"></i>
                 </button>
 
                 <h3>
                     STUDENT PORTAL
-                    <img src="/logo_nust_png.png" id="uni-logo">
+                    <img src="public/logo_nust_png.png" id="uni-logo">
                 </h3>
             </div>
 
@@ -106,7 +106,7 @@
         <!-- ASIDE -->
         <aside id="sidebar" style="display:none;">
             <div id="student-card">
-                <img src="/me1.png" id="student-dp">
+                <img src="public/logo_nust_png.png" id="student-dp">
                 <h4 form="student-form" value=""><?php echo $current_national_id; ?></h4>
                 <h4 form="student-form" value=""><?php echo $current_student_first_name; ?> <?php echo $current_student_middle_name; ?> <?php echo $current_student_last_name; ?></h4>
             </div>
@@ -130,7 +130,7 @@
                 <!-- PERSONAL -->
                 <div class="content-box">
                     <h3>Personal Information</h3>
-
+                    <br>
                     <table>
                         <tr><td>Name</td><td form="student-form" ><?php echo $current_student_first_name; ?> <?php echo $current_student_middle_name; ?> <?php echo $current_student_last_name; ?></td></tr>
                         <tr><td>ID Number</td><td form="student-form"><?php echo $current_national_id; ?></td></tr>
@@ -143,12 +143,13 @@
                         </tbody>
                     </table>
 
-                    <button onclick="togglePersonal()">Show More</button>
+                    <button onclick="togglePersonal()" id="personal-btn" class="bottom-btn-show-more">Show More</button>
                 </div>
 
                 <!-- ACADEMIC -->
                 <div class="content-box">
                     <h3>Academic Details</h3>
+                    <br>
 
                     <table>
                         <tr><td>Student Number</td><td form="student-form"><?php echo $current_student_id; ?></td></tr>
@@ -161,7 +162,7 @@
                         </tbody>
                     </table>
 
-                    <button onclick="toggleAcademic()">Show More</button>
+                    <button onclick="toggleAcademic()" id="academic-btn" class="bottom-btn-show-more">Show More</button>
                 </div>
 
             </div>
@@ -172,9 +173,10 @@
                 <!-- COURSES -->
                 <div class="content-box">
                     <h3>Registered Courses</h3>
+                    <br>
 
-                    <table border="1">
-                        <tr><th>Code</th><th>Name</th><th>Type</th></tr>
+                    <table >
+                        <tr><td>Course Code<b></b></td><td><b>Course Name</b></td><td><b>Course Type</b></td></tr>
 
                         <tr><td>SCS1111</td><td>Intro CS</td><td>Core</td></tr>
                         <tr><td>SCS1112</td><td>DSA</td><td>Core</td></tr>
@@ -187,12 +189,13 @@
                         </tbody>
                     </table>
 
-                    <button onclick="toggleCourses()">Show More</button>
+                    <button onclick="toggleCourses()" id="courses-btn" class="bottom-btn-show-more">Show More</button>
                 </div>
 
                 <!-- FINANCIAL -->
                 <div class="content-box">
                     <h3>Financial Details</h3>
+                    <br>
 
                     <table>
                         <tr><td>Name</td><td form="student-form"><?php echo $current_student_first_name; ?> <?php echo $current_student_middle_name; ?> <?php echo $current_student_last_name; ?></td></tr>
@@ -219,14 +222,17 @@ function toggleAside() {
 
 function togglePersonal() {
     document.getElementById("personal-extra").classList.toggle("hidden");
+    document.getElementById("personal-btn").textContent = document.getElementById("personal-extra").classList.contains("hidden") ? "Show More" : "Show Less";
 }
 
 function toggleAcademic() {
     document.getElementById("academic-extra").classList.toggle("hidden");
+    document.getElementById("academic-btn").textContent = document.getElementById("academic-extra").classList.contains("hidden") ? "Show More" : "Show Less";
 }
 
 function toggleCourses() {
     document.getElementById("courses-extra").classList.toggle("hidden");
+    document.getElementById("courses-btn").textContent = document.getElementById("courses-extra").classList.contains("hidden") ? "Show More" : "Show Less";
 }
 </script>
 
