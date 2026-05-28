@@ -1,0 +1,41 @@
+:root{
+        /* --primary-color:rgb(105, 44, 155);
+    --secondary-color:rgb(141, 34, 228);
+     */
+     
+    --primary-color:#ff8f1f;
+    --secondary-color:#ffa11d;
+
+    --blue-color:rgb(5, 121, 166);
+
+    --light-theme-background:white;
+    --light-theme-text:rgb(63, 63, 63);
+    --light-theme-back:rgb(216, 216, 216);
+
+    
+    --dark-theme-background:rgb(232, 232, 232);
+    --dark-theme-text:rgb(0, 0, 0);
+    --dark-theme-text-2:rgb(0, 0, 0);
+    --dark-theme-text-btn:rgb(255, 255, 255);
+
+    --dark-theme-back:rgb(232, 232, 232);
+    --dark-theme-hover-color:rgb(201, 201, 201);
+
+    --dark-theme-student-dashboard-background:rgb(150, 150, 150);
+    --dark-theme-back-textbox : rgb(223, 220, 220);
+
+    --table-thead:#ffa74f;
+
+    --mybox-shadow:0 6px 18px rgba(0, 0, 0, 0.12);
+
+    
+    /* --dark-theme-background:rgb(22, 21, 21);
+    --dark-theme-text:rgb(228, 228, 228);
+    --dark-theme-text-2:rgb(204, 203, 203);
+
+    --dark-theme-back:rgb(35, 35, 35);
+    --dark-theme-hover-color:rgb(61, 24, 92);
+
+    --dark-theme-student-dashboard-background:rgb(15, 15, 15); */
+
+}

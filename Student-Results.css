@@ -1,0 +1,169 @@
+*{
+    padding: 0;     
+    margin:0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+#student-results-container{
+    height: auto;
+    width: 100%;
+    background: var(--dark-theme-background);
+    color: var(--dark-theme-text);
+}
+#examination-heading{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+#examination-heading button{
+    background: var(    --light-theme-text);
+    font-weight: 600;
+    border: none;
+    max-width: 100px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+#examination-heading button:hover{
+    scale: 1.08;
+}
+
+#examination-heading span{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+#student-results-envelope h2{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    color: var(--blue-color);
+}
+
+#top-heading{
+    background: var(--primary-color);
+    padding: 10px 40px;
+    color: var(--dark-theme-text-btn);
+}
+
+
+#student-results-envelope{
+    display: flex;
+    flex-direction: column ;
+    width: 98%;
+    justify-self: center;
+    padding: 20px;
+    
+}
+
+
+#student-results-personal-info{
+    margin-top: 60px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border: 2px solid var(--primary-color);
+    background: var(--dark-theme-back);
+    box-shadow: var(--mybox-shadow);
+    border-radius:10px ;
+
+
+}
+
+#results-table-con{
+    border: 4px solid var(--dark-theme-background);
+    border-radius:10px ;
+    padding: 10px;
+    width: 100%;
+}
+
+#student-results-personal-info table{
+    
+    width: 100%;
+    border:none;
+
+}
+#student-results-personal-info table thead{
+    background: var(--dark-theme-text-btn);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-radius: 10px;
+}
+
+#student-results-personal-info table th{
+    
+    border: none;
+    
+
+}
+#student-results-personal-info table #image-con{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+#student-results-personal-info table th img{
+    height: 200px;
+
+}
+
+#student-results-personal-info table td{
+    border: none;
+    width: 600px;
+    font-weight: 600;
+}
+
+
+
+
+
+
+#students-results-table-container{
+    margin-top: 60px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border: 2px solid var(--primary-color);
+    box-shadow: var(--mybox-shadow);
+    border-radius:10px ;
+    background: var(--dark-theme-back);
+}
+
+
+
+
+#students-results-table-container table{
+    width: 100%;
+    border: 2px solid var(--primary-color);
+
+}
+
+#exam-table-con{
+    overflow-x: auto;
+}
+
+
+
+@media (max-width: 700px) {
+
+    #results-table-con{
+
+    }
+
+    #student-results-personal-info table thead{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+}

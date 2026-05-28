@@ -1,0 +1,618 @@
+*{
+    padding: 0;     
+    margin:0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+ .hidden { display: none; }
+
+
+#student-dashboard-page{
+    height: auto;
+    width: 100%;
+    background:rgb(15, 15, 15) ;
+    display: grid;
+    grid-template-rows: 6% 90%;
+    
+}
+
+header{
+
+    display:flex ;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+#header-things{
+    background: var(--primary-color);
+    color: var(--dark-theme-text-btn);
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 20px 0px 20px ;
+
+
+    animation-name: border-moves;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-fill-mode: both;
+    animation-timing-function: linear;
+    height: 100%;
+}
+
+#bottom-border {
+  width: 100%;
+  height: 1px;
+
+  background: linear-gradient(90deg, black, var(--secondary-color), black);
+  background-size: 200% 100%;
+
+  animation: moveBorder 2s linear infinite alternate;
+}
+
+/* animation */
+@keyframes moveBorder {
+  0% {
+    background-position: 0% 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
+}
+
+
+
+
+
+#top-icons{
+    font-size: 30px;
+    transition: all 0.5s;
+
+}
+
+#top-icons:hover{
+    scale: 1.14;
+}
+
+#right-top-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap:40px;
+
+}
+
+#left-top-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap:20px;
+
+}
+
+#left-top-container button{
+    background: transparent;
+    width: 70px;
+    padding: 0px;
+    margin: 0px;
+}
+
+#left-top-container h3{
+    font-size: clamp(0.9rem, 2.5vw, 1.4rem);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+}
+
+#uni-logo{
+    height: 40px;
+}
+
+#logout-btn{
+    padding: 5px 10px 5px 10px;
+
+    width: 100px;
+    border: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4px;
+    background: var(--dark-theme-text);
+    font-weight: 600;
+    color: var(--dark-theme-text-btn);
+
+    border-radius: 7px;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+#logout-btn:hover{
+    scale: 1.10;
+}
+
+
+
+#logout-btn-icon{
+    font-size: 20px;
+    transition: all 0.5s;
+
+}
+
+#main-content{
+    /* overflow: hidden; */
+    display: grid;
+    grid-template-columns: 14% 80%;
+    /* grid-template-columns: 100%; */
+
+    gap: 20px;
+    height: fit-content;
+    background: var(--dark-theme-background) ;
+}
+
+aside{
+    background: var(--dark-theme-back-textbox);
+    height: auto;
+    border-right: 1px solid var(--blue-color);
+    box-shadow: var(--mybox-shadow);
+}   
+
+
+#btns{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 20px 0px 20px;
+    background: var(--dark-theme-back-textbox);
+    color: var(--dark-theme-text);
+    border-bottom: 1px solid var(--blue-color);
+    border-left: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    border-radius: 0px;
+    
+}
+
+#btns:hover{
+    background: var(--table-thead);
+    transform: translateX(10px);
+
+}
+
+#btns-icons{
+    font-size: 20px;
+
+}
+
+#student-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--dark-theme-text);
+    padding: 20px;
+    gap: 5px;
+    border-bottom: 1px solid var(--blue-color);
+    box-shadow: --mybox-shadow;
+}
+
+#dp-container {
+    height: 90px;
+    width: 90px;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow:hidden;
+}
+#student-dp{
+    width: 100%;
+}
+
+#student-card h4{
+    font-size: clamp(0.9rem, 2.5vw, 0.99rem);
+    font-weight: 400;
+}
+
+
+
+
+
+
+
+
+
+#content-container{
+    display: flex;
+    padding: 40px;
+    flex-direction: column;
+    justify-self: center;
+    align-items: center;
+    gap: 70px;
+}
+
+#person-and-financial-box{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+#reg-and-academic-box{
+    display: flex;
+    flex-direction: column;
+    gap: 70px;
+    width: 100%;
+    
+}
+
+
+
+.content-box{
+    background: var(--dark-theme-background);
+    box-shadow: var(--mybox-shadow);
+    border-radius: 10px;
+    height: max-content;
+    width: 100%;
+    border: 2px solid var(--primary-color);
+}
+
+
+
+#top-banner{
+    background: var(--blue-color);
+    height: 50px;
+    width: 100%;
+    color: var(--dark-theme-text-btn);
+    display: flex;
+    justify-content: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    align-items: center;
+    padding:20px;
+    justify-self:center ;
+    border-bottom: 2px solid var(--primary-color);
+    box-shadow: var(--mybox-shadow);
+}
+
+#top-banner h3{
+    font-weight: 500;
+}
+
+
+#person-img{
+    border-radius: 100%;
+    overflow: hidden;
+    width: clamp(70px, 50%, 140px);
+}
+
+
+
+
+#person-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    gap: 20px;
+}
+
+.big-card-info{
+    color: var(--dark-theme-text-2);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-height: 200px;
+    max-height: fit-content;
+
+
+}
+
+#person-information .big-card-info{
+    /* border: 1px solid rgb(57, 57, 57); */
+    padding: 10px  20px;
+}
+
+
+#academic-details{
+    width: 100%;
+}
+
+#registered-courses{
+    width: 100%;
+
+}
+
+#academic-details .big-card-info{
+    padding: 10px  20px;
+}
+
+.big-card-info table{
+    border-collapse: collapse;
+    }
+
+
+
+.big-card-info table td{
+    padding: 10px 10px 10px 7px ;
+
+
+}
+
+.big-card-info table tr{
+    /* cursor: pointer; */
+    transition: all 0.4s;
+}
+
+/* .big-card-info table tr:hover{
+    transform: translateX(10px);
+}
+ */
+
+
+.big-card-info #hh1{
+    font-size: clamp(0.8rem, 2.5vw, 1.0rem);
+    font-weight: 200;
+
+}
+
+
+
+.big-card-info #hh2{
+    font-size: clamp(0.8rem, 2.5vw, 1.0rem);
+    font-weight: 200;
+}
+
+.big-card-info #labell{
+    font-size: clamp(0.8rem, 2.5vw, 1.0rem);
+    font-weight: 200;
+}
+
+
+
+
+#financial-details .big-card-info{
+    padding: 10px  20px;
+    width: 100%;
+}
+
+
+#registered-courses .big-card-info{
+    padding: 10px  20px;
+    width: 100%;
+}
+
+#courses-container{
+    width: 100%;
+
+}
+
+
+#courses-container table thead{
+    background: var(--dark-theme-back);
+}
+
+#courses-container table thead th{
+    color: var(--dark-theme-text);
+  
+    padding: 10px 20px;
+
+    text-align: left;
+
+}
+
+
+#courses-container table tbody #hh1{
+    transition: all 0.4s;
+    padding: 10px 20px;
+
+
+}
+
+#courses-container table tbody tr:hover{
+    background: var(--dark-theme-hover-color);
+
+}
+
+
+.show-more-content-btn{
+    height: 20px;
+    display: flex;
+    align-self: flex-end;
+    justify-content: center;
+    position: relative;
+    border-radius: 10px;
+    width: 100%;
+    height: 40px;
+}
+.show-more-content-btn button{
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+
+    border: none;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: var(--dark-theme-text);
+    font-size: 18px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.4s;
+    border-top: 2px solid var(--table-thead);
+
+
+}
+.show-more-content-btn button:hover{
+    background: var(--dark-theme-back);
+}
+
+@media (max-width: 768px) {
+
+    #student-dashboard-page{
+        
+        display: grid;
+        grid-template-rows: 5% 95%;
+    
+    }
+
+    #left-top-container h3{
+    }
+
+    #top-icons{
+        transition: all 0.5s;
+
+    }
+
+    #uni-logo{
+        height: 29px;
+        visibility: hidden;
+    }
+    #right-top-container{
+        gap: 1x;
+    }
+
+    #left-top-container{
+        gap: 1px;
+    }
+
+    
+    #left-top-container h3{
+        gap: 10px;
+
+    }
+    #logout-btn{
+        font-size: 14px;
+        
+    }
+
+    #header-things{
+        padding: 0px 5px 0px 5px ;
+    }
+
+
+    #logout-btn-icon{
+        font-size: 16px;
+    }
+
+    #content-container{
+        padding: 20px;
+        
+    }
+
+    #person-img{
+
+        width: 100px;
+
+    }
+
+    #person-container{
+        gap: 10px;
+        flex-direction: column;
+
+    }
+
+    #person-and-financial-box{
+        width: 100%;        
+    }       
+
+
+    #reg-and-academic-box{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        width: 100%;        
+
+
+    }
+    
+
+    
+
+    #main-content{
+        grid-template-columns: 35% 75%;
+        /* grid-template-columns: 100%; */
+
+
+
+    }
+    
+    aside{
+        /* display: none; */
+    }   
+
+    #btns{
+        font-size: 10px;
+        padding: 0px 6px 0px 6px;
+        justify-content: left;
+        gap: 4px;
+    }
+
+    #btns-icons{
+        font-size: 15px;
+    }
+
+    #student-card h4{
+        font-size: clamp(0.3rem, 2.5vw, 0.99rem);
+    }
+
+
+    #person-and-financial-box{
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+    }
+    #reg-and-academic-box{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        width: auto;
+
+
+    }
+
+
+
+    .content-box{
+        width: 100%;
+
+    }
+
+    
+    #person-container{
+        padding: 5px;
+
+
+    }
+
+
+    #person-information .big-card-info{
+        padding: 10px  20px;
+        width: 99%;
+    }
+
+    #academic-details{
+
+    }
+    #academic-details .big-card-info{
+        padding: 10px  20px;
+
+    }
+
+
+    #registered-courses{
+        
+    }
+
+  
+
+}
