@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Form</title>
     <link rel="stylesheet" href="Admin-Form.css">
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="global .css">
+    <link rel="stylesheet" href="forms.css">
 </head>
 
 <body>
@@ -25,7 +26,7 @@
         <section id="input-form-container">
 
             <!-- PERSONAL DETAILS -->
-            <form id="Student-personal-details">
+            <form id="Student-personal-details" name="student-personal-details" method="post">
 
                 <div id="personal-heading">
                     <h2>👤 Personal Details</h2>
@@ -35,22 +36,22 @@
 
                     <div class="input-field">
                         <label>National ID</label>
-                        <input type="text" placeholder="National ID">
+                        <input type="text" placeholder="National ID" name="national-id">
                     </div>
 
                     <div class="input-field">
                         <label>First Name</label>
-                        <input type="text" placeholder="First Name">
+                        <input type="text" placeholder="First Name" name="first-name">
                     </div>
 
                     <div class="input-field">
                         <label>Middle Name</label>
-                        <input type="text" placeholder="(Optional)">
+                        <input type="text" placeholder="(Optional)" name="middle-name">
                     </div>
 
                     <div class="input-field">
                         <label>Last Name</label>
-                        <input type="text" placeholder="Last Name">
+                        <input type="text" placeholder="Last Name" name="last-name">
                     </div>
 
                     <div class="input-field">
@@ -63,32 +64,32 @@
 
                     <div class="input-field">
                         <label>DOB</label>
-                        <input type="date">
+                        <input type="date" name="dob">
                     </div>
 
                     <div class="input-field">
                         <label>Country</label>
-                        <input type="text" placeholder="Country">
+                        <input type="text" placeholder="Country" name="country">
                     </div>
 
                     <div class="input-field">
                         <label>City</label>
-                        <input type="text" placeholder="City">
+                        <input type="text" placeholder="City" name="city">
                     </div>
 
                     <div class="input-field">
                         <label>Address</label>
-                        <input type="text" placeholder="Address">
+                        <input type="text" placeholder="Address" name="address">
                     </div>
 
                     <div class="input-field">
                         <label>Phone Number</label>
-                        <input type="tel" placeholder="Phone Number">
+                        <input type="tel" placeholder="Phone Number" name="phone-number">
                     </div>
 
                     <div class="input-field">
                         <label>Email</label>
-                        <input type="email" placeholder="Email">
+                        <input type="email" placeholder="Email" name="email">
                     </div>
 
                 </div>
@@ -96,7 +97,7 @@
             </form>
 
             <!-- ENROLLMENT INFORMATION -->
-            <form id="student-enrollment-information">
+            <form id="student-enrollment-information" name="student-enrollment-information" method="post">
 
                 <div id="personal-heading">
                     <h2>Enrollment Information 🚪</h2>
@@ -109,7 +110,7 @@
 
                         <select name="department">
                             <option value="">-- Select Department --</option>
-                            <option value="computer-science">Department of Computer Science</option>
+                            <option value="computer_science">Department of Computer Science</option>
                             <option value="mathematics">Department of Mathematics</option>
                             <option value="physics">Department of Physics</option>
                         </select>
@@ -137,6 +138,7 @@
                         <input type="text"
                                id="student-id"
                                placeholder="Student Number will be generated automatically"
+                               name="student-id"
                                readonly>
 
                         <br>
@@ -154,6 +156,7 @@
                         <input type="text"
                                id="password"
                                placeholder="Password will be generated automatically"
+                               name="password"
                                readonly>
 
                         <br>
@@ -178,10 +181,10 @@
                     </h2>
 
                     <span>
-                        <button id="btn2">💾 Save</button>
-                        <button id="btn2">✏️ Update</button>
-                        <button id="btn2">🗑️ Delete</button>
-                        <button id="btn2">↩ Reset</button>
+                        <button id="btn-save" name="btn-save">💾 Save</button>
+                        <button id="btn-update" name="btn-update">✏️ Update</button>
+                        <button id="btn-delete" name="btn-delete">🗑️ Delete</button>
+                        <button id="btn-reset" name="btn-reset">↩ Reset</button>
                     </span>
 
                 </form>
@@ -308,6 +311,37 @@
     }
 
 </script>
+
+
+<?php
+
+    include "config/db.php";
+    $nationalID = $_POST['national-id'];
+    $firstName = $_POST['first-name'];
+    $middleName = $_POST['middle-name'];
+    $lastName = $_POST['last-name'];
+    $gender = $_POST['gender'];
+    $dob = $_POST['dob'];
+    $country = $_POST['country'];
+    $city = $_POST['city'];
+    $address = $_POST['address'];
+    $phoneNumber = $_POST['phone-number'];
+    $email = $_POST['email'];
+    $department = $_POST['department'];
+    $degree = $_POST['degree'];
+    $studentID = $_POST['student-id'];
+    $password = $_POST['password'];
+
+    $btnSave = $_POST['btn-save'];
+    $btnUpdate = $_POST['btn-update'];
+    $btnDelete = $_POST['btn-delete'];
+    $btnReset = $_POST['btn-reset'];
+
+
+    $sql = "INSERT INTO students (national_id, first_name, middle_name, last_name, gender, dob, country, city, address, phone_number, email, department, degree, student_id, password)
+            VALUES ('$nationalID', '$firstName', '$middleName', '$lastName', '$gender', '$dob', '$country', '$city', '$address', '$phoneNumber', '$email', '$department', '$degree', '$studentID', '$password')"; 
+              
+?>
 
 </body>
 </html>
