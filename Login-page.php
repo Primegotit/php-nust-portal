@@ -1,3 +1,24 @@
+<?php 
+
+    require "config/config.php";
+    if($_SERVER["REQUEST_METHOD"] == "POST") {
+        $student_number = $_POST["student_number"];
+        $password = $_POST["password"];
+
+        $sql = "SELECT * FROM students WHERE student_number = '$student_number' AND password = '$password'";
+        $result = mysqli_query($conn, $sql);
+
+        if(mysqli_num_rows($result) == 1) {
+            session_start();
+            $_SESSION["student_number"] = $student_number;
+            header("Location: Student-Home.php");
+            exit();
+        } else {
+            echo "<script>alert('Invalid student number or password. Please try again.');</script>";
+        }
+    }
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,20 +32,16 @@
 
 <div id="loginpage">
 
-    <!-- NAVBAR -->
     <nav>
         <img src="./public/logo_nust_png.png" alt="NUST Logo" id="nust-logo">
         <h2>University Management System</h2>
     </nav>
 
-    <!-- MAIN BODY -->
     <div id="main-login-body">
 
         <div>
-            <!-- Left empty section (can be used for image/banner later) -->
         </div>
 
-        <!-- LOGIN CONTAINER -->
         <div id="login-container">
 
             <div id="logo-wrapper">
@@ -34,7 +51,7 @@
             <h3>STUDENTS PORTAL</h3>
             <br>
 
-            <form method="POST" action="login.php">
+            <form method="POST" >
 
                 <div id="textbox-container">
                     <input type="text" name="student_number" placeholder="Student Number" required>

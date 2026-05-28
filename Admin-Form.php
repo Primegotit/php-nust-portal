@@ -1,3 +1,49 @@
+<?php
+   
+    require "config/config.php";
+
+    if(isset($_POST['btn-delete'])) {
+    }
+
+    if(isset($_POST['btn-update'])) {
+    }
+
+    if(isset($_POST['btn-reset'])) {
+      header("Location: " . $_SERVER['PHP_SELF']);
+        exit();  
+    }
+
+    if(isset($_POST['btn-save'])) {
+        $nationalID = $_POST['national-id'];
+        $firstName = $_POST['first-name'];
+        $middleName = $_POST['middle-name'];
+        $lastName = $_POST['last-name'];
+        $gender = $_POST['gender'];
+        $dob = $_POST['dob'];
+        $country = $_POST['country'];
+        $city = $_POST['city'];
+        $address = $_POST['address'];
+        $phoneNumber = $_POST['phone-number'];
+        $email = $_POST['email'];
+        $department = $_POST['department'];
+        $degree = $_POST['degree'];
+        $studentID = $_POST['student-id'];
+        $password = $_POST['password'];
+
+
+
+        $sql = "INSERT INTO tblstudents 
+            VALUES ('$nationalID', '$firstName', '$middleName', '$lastName', '$gender', '$dob', '$country', '$city', '$address', '$phoneNumber', '$email', '$department', '$degree', '$studentID', '$password')"; 
+
+        mysqli_query($conn, $sql);
+        header("Location: " . $_SERVER['PHP_SELF']);
+        exit();
+        echo "<script>alert('Student information saved successfully!');</script>";
+    }
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -321,42 +367,7 @@
 </script>
 
 
-<?php
-   
-    require "config/config.php";
 
-    $btnSave = $_POST['btn-save'];
-    $btnUpdate = $_POST['btn-update'];
-    $btnDelete = $_POST['btn-delete'];
-    $btnReset = $_POST['btn-reset'];
-
-    if(isset($btnSave)) {
-        $nationalID = $_POST['national-id'];
-        $firstName = $_POST['first-name'];
-        $middleName = $_POST['middle-name'];
-        $lastName = $_POST['last-name'];
-        $gender = $_POST['gender'];
-        $dob = $_POST['dob'];
-        $country = $_POST['country'];
-        $city = $_POST['city'];
-        $address = $_POST['address'];
-        $phoneNumber = $_POST['phone-number'];
-        $email = $_POST['email'];
-        $department = $_POST['department'];
-        $degree = $_POST['degree'];
-        $studentID = $_POST['student-id'];
-        $password = $_POST['password'];
-
-
-
-        $sql = "INSERT INTO tblstudents 
-            VALUES ('$nationalID', '$firstName', '$middleName', '$lastName', '$gender', '$dob', '$country', '$city', '$address', '$phoneNumber', '$email', '$department', '$degree', '$studentID', '$password')"; 
-
-        mysqli_query($conn, $sql);
-        echo $firstName . " " . $lastName . " has been added successfully!";
-    }
-
-?>
 
 </body>
 </html>
