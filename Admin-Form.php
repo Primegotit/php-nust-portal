@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Form</title>
     <link rel="stylesheet" href="Admin-Form.css">
-    <link rel="stylesheet" href="global .css">
+    <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="forms.css">
 </head>
 
@@ -26,7 +26,7 @@
         <section id="input-form-container">
 
             <!-- PERSONAL DETAILS -->
-            <form id="Student-personal-details" name="student-personal-details" method="post">
+            <form id="student-personal-details" name="student-personal-details" method="post">
 
                 <div id="personal-heading">
                     <h2>👤 Personal Details</h2>
@@ -36,27 +36,27 @@
 
                     <div class="input-field">
                         <label>National ID</label>
-                        <input type="text" placeholder="National ID" name="national-id">
+                        <input type="text" placeholder="National ID" name="national-id" form="student-personal-details">
                     </div>
 
                     <div class="input-field">
                         <label>First Name</label>
-                        <input type="text" placeholder="First Name" name="first-name">
+                        <input type="text" placeholder="First Name" name="first-name" form="student-personal-details">
                     </div>
 
                     <div class="input-field">
                         <label>Middle Name</label>
-                        <input type="text" placeholder="(Optional)" name="middle-name">
+                        <input type="text" placeholder="(Optional)" name="middle-name" form="student-personal-details">
                     </div>
 
                     <div class="input-field">
                         <label>Last Name</label>
-                        <input type="text" placeholder="Last Name" name="last-name">
+                        <input type="text" placeholder="Last Name" name="last-name" form="student-personal-details">
                     </div>
 
                     <div class="input-field">
                         <label>Gender</label>
-                        <select name="gender">
+                        <select name="gender" form="student-personal-details">
                             <option value="male">Male</option>
                             <option value="female">Female</option>
                         </select>
@@ -64,32 +64,32 @@
 
                     <div class="input-field">
                         <label>DOB</label>
-                        <input type="date" name="dob">
+                        <input type="date" name="dob" form="student-personal-details">
                     </div>
 
                     <div class="input-field">
                         <label>Country</label>
-                        <input type="text" placeholder="Country" name="country">
+                        <input type="text" placeholder="Country" name="country" form="student-personal-details">
                     </div>
 
                     <div class="input-field">
                         <label>City</label>
-                        <input type="text" placeholder="City" name="city">
+                        <input type="text" placeholder="City" name="city" form="student-personal-details">
                     </div>
 
                     <div class="input-field">
                         <label>Address</label>
-                        <input type="text" placeholder="Address" name="address">
+                        <input type="text" placeholder="Address" name="address" form="student-personal-details">
                     </div>
 
                     <div class="input-field">
                         <label>Phone Number</label>
-                        <input type="tel" placeholder="Phone Number" name="phone-number">
+                        <input type="tel" placeholder="Phone Number" name="phone-number" form="student-personal-details">
                     </div>
 
                     <div class="input-field">
                         <label>Email</label>
-                        <input type="email" placeholder="Email" name="email">
+                        <input type="email" placeholder="Email" name="email" form="student-personal-details">
                     </div>
 
                 </div>
@@ -97,7 +97,7 @@
             </form>
 
             <!-- ENROLLMENT INFORMATION -->
-            <form id="student-enrollment-information" name="student-enrollment-information" method="post">
+            <form id="student-enrollment-information" name="student-personal-details" method="post">
 
                 <div id="personal-heading">
                     <h2>Enrollment Information 🚪</h2>
@@ -108,7 +108,7 @@
                     <div class="input-field">
                         <label>Select Department</label>
 
-                        <select name="department">
+                        <select name="department" form="student-personal-details">
                             <option value="">-- Select Department --</option>
                             <option value="computer_science">Department of Computer Science</option>
                             <option value="mathematics">Department of Mathematics</option>
@@ -120,7 +120,7 @@
 
                         <label>Select Degree</label>
 
-                        <select name="degree">
+                        <select name="degree" form="student-personal-details">
                             <option value="">-- Select Degree --</option>
                             <option value="bachelor">Bachelor's Degree in Computer Science</option>
                             <option value="master">Bachelor's Degree in Mathematics</option>
@@ -139,11 +139,12 @@
                                id="student-id"
                                placeholder="Student Number will be generated automatically"
                                name="student-id"
+                               form="student-personal-details"
                                readonly>
 
                         <br>
 
-                        <button type="button" onclick="generateStudentID()">
+                        <button type="button" onclick="generateStudentID()" >
                             🔀 Generate Student ID
                         </button>
 
@@ -157,6 +158,7 @@
                                id="password"
                                placeholder="Password will be generated automatically"
                                name="password"
+                               form="student-personal-details"
                                readonly>
 
                         <br>
@@ -174,17 +176,17 @@
             <!-- BUTTON CONTAINER -->
             <div id="button-container">
 
-                <form>
+                <form method="post">
 
                     <h2 style="font-size:17px; font-weight:300;">
                         Choose an operation
                     </h2>
 
                     <span>
-                        <button id="btn-save" name="btn-save">💾 Save</button>
-                        <button id="btn-update" name="btn-update">✏️ Update</button>
-                        <button id="btn-delete" name="btn-delete">🗑️ Delete</button>
-                        <button id="btn-reset" name="btn-reset">↩ Reset</button>
+                        <button id="btn-save" name="btn-save" form="student-personal-details">💾 Save</button>
+                        <button id="btn-update" name="btn-update" form="student-personal-details">✏️ Update</button>
+                        <button id="btn-delete" name="btn-delete" form="student-personal-details">🗑️ Delete</button>
+                        <button id="btn-reset" name="btn-reset" form="student-personal-details">↩ Reset</button>
                     </span>
 
                 </form>
@@ -239,53 +241,59 @@
         <!-- TABLE SECTION -->
         <section id="information-table-container">
 
-            <table>
+        <?php
+            require "config/config.php";
 
-                <thead>
+            echo "<table>";
+                echo "<thead>";
+                    echo "<tr>";
+                        echo "<th>National ID</th>";
+                        echo "<th>First Name</th>";
+                        echo "<th>Middle Name</th>";
+                        echo "<th>Last Name</th>";
+                        echo "<th>Gender</th>";
+                        echo "<th>DOB</th>";
+                        echo "<th>Country</th>";
+                        echo "<th>City</th>";
+                        echo "<th>Address</th>";
+                        echo "<th>Phone Number</th>";
+                        echo "<th>Email</th>";
+                        echo "<th>Department</th>";
+                        echo "<th>Degree</th>";
+                        echo "<th>Student ID</th>";
+                        echo "<th>Password</th>";
+                    echo "</tr>";
 
-                <tr>
-                    <th>National ID</th>
-                    <th>First Name</th>
-                    <th>Middle Name</th>
-                    <th>Last Name</th>
-                    <th>Gender</th>
-                    <th>DOB</th>
-                    <th>Country</th>
-                    <th>City</th>
-                    <th>Address</th>
-                    <th>Phone Number</th>
-                    <th>Email</th>
-                    <th>Department</th>
-                    <th>Degree</th>
-                    <th>Student ID</th>
-                    <th>Password</th>
-                </tr>
+                echo "</thead>";
 
-                </thead>
+                echo "<tbody>";
+                    $sql2 = "SELECT * FROM tblstudents";
+                    $result = mysqli_query($conn, $sql2);
+                    while($row = mysqli_fetch_assoc($result)) {
+                        echo "<tr>";
+                            echo "<td>" . $row["national_id"] . "</td>";
+                            echo "<td>" . $row["first_name"] . "</td>";
+                            echo "<td>" . $row["middle_name"] . "</td>";
+                            echo "<td>" . $row["last_name"] . "</td>";
+                            echo "<td>" . $row["gender"] . "</td>";
+                            echo "<td>" . $row["dob"] . "</td>";
+                            echo "<td>" . $row["country"] . "</td>";
+                            echo "<td>" . $row["city"] . "</td>";
+                            echo "<td>" . $row["address"] . "</td>";
+                            echo "<td>" . $row["phone_number"] . "</td>";
+                            echo "<td>" . $row["email"] . "</td>";
+                            echo "<td>" . $row["department"] . "</td>";
+                            echo "<td>" . $row["degree"] . "</td>";
+                            echo "<td>" . $row["student_id"] . "</td>";
+                            echo "<td>" . $row["password"] . "</td>";
+                        echo "</tr>";
+                    }
+                echo "</tbody>";
 
-                <tbody>
+            echo "</table>";
 
-                <tr>
-                    <td>123456789</td>
-                    <td>Promise</td>
-                    <td>Doe</td>
-                    <td>Siafwiyo</td>
-                    <td>Male</td>
-                    <td>22/10/2005</td>
-                    <td>Zimbabwe</td>
-                    <td>Bulawayo</td>
-                    <td>Magwegwe North</td>
-                    <td>0789880071</td>
-                    <td>promise@example.com</td>
-                    <td>Computer Science</td>
-                    <td>Computer Science</td>
-                    <td>CS123456</td>
-                    <td>password123</td>
-                </tr>
-
-                </tbody>
-
-            </table>
+        ?>
+    
 
         </section>
 
@@ -314,33 +322,40 @@
 
 
 <?php
-
-    include "config/db.php";
-    $nationalID = $_POST['national-id'];
-    $firstName = $_POST['first-name'];
-    $middleName = $_POST['middle-name'];
-    $lastName = $_POST['last-name'];
-    $gender = $_POST['gender'];
-    $dob = $_POST['dob'];
-    $country = $_POST['country'];
-    $city = $_POST['city'];
-    $address = $_POST['address'];
-    $phoneNumber = $_POST['phone-number'];
-    $email = $_POST['email'];
-    $department = $_POST['department'];
-    $degree = $_POST['degree'];
-    $studentID = $_POST['student-id'];
-    $password = $_POST['password'];
+   
+    require "config/config.php";
 
     $btnSave = $_POST['btn-save'];
     $btnUpdate = $_POST['btn-update'];
     $btnDelete = $_POST['btn-delete'];
     $btnReset = $_POST['btn-reset'];
 
+    if(isset($btnSave)) {
+        $nationalID = $_POST['national-id'];
+        $firstName = $_POST['first-name'];
+        $middleName = $_POST['middle-name'];
+        $lastName = $_POST['last-name'];
+        $gender = $_POST['gender'];
+        $dob = $_POST['dob'];
+        $country = $_POST['country'];
+        $city = $_POST['city'];
+        $address = $_POST['address'];
+        $phoneNumber = $_POST['phone-number'];
+        $email = $_POST['email'];
+        $department = $_POST['department'];
+        $degree = $_POST['degree'];
+        $studentID = $_POST['student-id'];
+        $password = $_POST['password'];
 
-    $sql = "INSERT INTO students (national_id, first_name, middle_name, last_name, gender, dob, country, city, address, phone_number, email, department, degree, student_id, password)
+
+
+        $sql = "INSERT INTO tblstudents 
             VALUES ('$nationalID', '$firstName', '$middleName', '$lastName', '$gender', '$dob', '$country', '$city', '$address', '$phoneNumber', '$email', '$department', '$degree', '$studentID', '$password')"; 
-              
+
+        mysqli_query($conn, $sql);
+        echo $firstName . " " . $lastName . " has been added successfully!";
+    }
+
 ?>
 
 </body>
