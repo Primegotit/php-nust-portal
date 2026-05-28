@@ -112,10 +112,10 @@
             </div>
 
             <button>Portal Dashboard</button>
-            <button>New Registration</button>
+            <button >New Registration</button>
             <button>Payments History</button>
             <button>Continuous Assessment</button>
-            <button>Examinations Results</button>
+            <button ><a href="student-results.php">Examinations Results</a></button>
             <button>Modules Information</button>
         </aside>
 

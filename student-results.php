@@ -162,7 +162,6 @@
 
             </div>
 
-            <!-- RESULTS TABLE -->
             <div id="students-results-table-container">
 
                 <section id="examination-heading">
@@ -177,62 +176,89 @@
                 </section>
 
                 <section id="exam-table-con">
+<?php
 
-                    <table>
+echo "<table border='1'>";
+echo "<thead>";
+echo "<tr>";
+echo "<th>Academic Year</th>";
+echo "<th>Semester & Part</th>";
+echo "<th>Course</th>";
+echo "<th>Mark</th>";
+echo "<th>Classification</th>";
+echo "</tr>";
+echo "</thead>";
+echo "<tbody>";
 
-                        <thead>
-                            <tr>
-                                <th>Academic Year</th>
-                                <th>Semester & Part</th>
-                                <th>Course Code</th>
-                                <th>Course Name</th>
-                                <th>Mark</th>
-                                <th>Classification</th>
-                            </tr>
-                        </thead>
+require "config/config.php";
 
-                        <tbody>
+$sql = "SELECT * FROM tblregister WHERE student_id = '$current_student_id'";
+$result = mysqli_query($conn, $sql);
 
-                            <tr>
-                                <td>2026</td>
-                                <td>2.1</td>
-                                <td>SCS2104</td>
-                                <td>Web Development</td>
-                                <td>78</td>
-                                <td>1</td>
-                            </tr>
+if(mysqli_num_rows($result) == 1) {
 
-                            <tr>
-                                <td>2026</td>
-                                <td>2.1</td>
-                                <td>SCS2100</td>
-                                <td>Introduction to Statistics</td>
-                                <td>78</td>
-                                <td>1</td>
-                            </tr>
+    $row = mysqli_fetch_assoc($result);
 
-                            <tr>
-                                <td>2026</td>
-                                <td>2.1</td>
-                                <td>SCS2101</td>
-                                <td>Database Systems</td>
-                                <td>81</td>
-                                <td>1</td>
-                            </tr>
+    // number of module columns
+    for($x = 1; $x <= 10; $x++) {
 
-                            <tr>
-                                <td>2026</td>
-                                <td>2.1</td>
-                                <td>SCS2102</td>
-                                <td>Operating Systems</td>
-                                <td>75</td>
-                                <td>1</td>
-                            </tr>
+        if(isset($row["module_" . $x])) {
 
-                        </tbody>
+            $current_course_full_name = trim($row["module_" . $x]);
 
-                    </table>
+            if($current_course_full_name != "") {
 
+                // RESET VARIABLES
+                $tablename = "";
+                $final_mark = "";
+                $grade = "";
+
+                // GET MODULE CODE
+                // Example: "SCS2105 Calculus"
+                // Result: "scs2105"
+                $parts = explode(" ", $current_course_full_name);
+                $module_code = strtolower($parts[0]);
+
+                // FIND EXACT TABLE
+                $sql_table = "SHOW TABLES LIKE '$module_code%'";
+                $tableexists = mysqli_query($conn, $sql_table);
+
+                if(mysqli_num_rows($tableexists) > 0) {
+
+                    $table_row = mysqli_fetch_array($tableexists);
+                    $tablename = $table_row[0];
+
+                    // GET RESULTS
+                    $sql_get_results = "SELECT * FROM $tablename WHERE student_id = '$current_student_id'";
+                    $result_get_results = mysqli_query($conn, $sql_get_results);
+
+                    if(mysqli_num_rows($result_get_results) > 0) {
+
+                        $result_row = mysqli_fetch_assoc($result_get_results);
+
+                        $final_mark = $result_row["final_mark"];
+                        $grade = $result_row["grade"];
+                    }
+                }
+
+                // DISPLAY
+                echo "<tr>";
+                echo "<td>" . date("Y") . "</td>";
+                echo "<td>" . $current_part . "</td>";
+                echo "<td>" . $current_course_full_name . "</td>";
+                echo "<td>" . $final_mark . "</td>";
+                echo "<td>" . $grade . "</td>";
+                echo "</tr>";
+            }
+        }
+    }
+}
+
+echo "</tbody>";
+echo "</table>";
+
+?>
+                    
                 </section>
 
             </div>
@@ -251,4 +277,3 @@
 
 </body>
 </html>
-```
