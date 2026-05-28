@@ -1,3 +1,72 @@
+<?php
+    require "config/config.php";
+    session_start();
+    
+
+$correct_current_part = "";
+$correct_course_code = "";
+$correct_course_name = "";
+$tablename = "";
+    if(isset($_POST["lecturer-submit-btn"])) {
+        $lecturer_id = $_POST["lecturer_id"] ?? '';
+        $fullname = $_POST["fullname"] ?? '';
+        $department = $_POST["department"] ?? '';
+        $current_part = $_POST["current_part"] ?? '';
+        $course_code = $_POST["course_code"] ?? '';
+        $current_module = $_POST["current_module"] ?? '';
+        $current_year = $_POST["current_year"] ?? '';
+
+
+        
+        $sql = "SHOW TABLES LIKE '" . strtolower($course_code) . "%'";
+        $tableexists = mysqli_query($conn, $sql);
+
+        while($row = mysqli_fetch_array($tableexists)) {
+            $tablename = $row[0];
+            $correct_current_part = $current_part;
+            $correct_course_code = $course_code;
+            $correct_course_name = $current_module;
+
+
+            $_SESSION["tablename"] = $tablename;
+            $_SESSION["current_part"] = $correct_current_part;
+            $_SESSION["course_code"] = $correct_course_code;
+            $_SESSION["course_name"] = $correct_course_name;
+                        
+        }
+
+
+        
+
+    }
+
+
+
+
+
+?>
+
+<?php
+    require "config/config.php";
+
+        
+        if(isset($_POST["mark-save-btn"])) {
+            $student_id = $_POST["student_id"] ?? '';
+            $student_name = $_POST["student_name"] ?? '';
+            $student_middle_name = $_POST["student_middle_name"] ?? '';
+            $student_surname = $_POST["student_surname"] ?? '';
+            $final_mark = $_POST["final_mark"] ?? '';
+            $grade = $_POST["grade"] ?? '';
+
+            $sql2 = "INSERT INTO " . $_SESSION["tablename"]. "  VALUES ('$student_id', '$student_name', '$student_middle_name', '$student_surname', '" . $_SESSION["current_part"] . "', '" . $_SESSION["course_code"] . "', '" . $_SESSION["course_name"] . "', '$final_mark', '$grade')";
+            mysqli_query($conn, $sql2);
+
+            echo "<script>alert('User results saved successfully!');</script>";
+        
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -65,37 +134,50 @@
 
             <section id="lecturer-field-container">
                 <label for="course_code">Course Code</label>
-                <input type="text" id="course_code" name="course_code" placeholder="Enter course code">
+                <select id="course_code" name="course_code" placeholder="Enter course code">
+                    <?php
+                        require "config/config.php";
+                        $sql = "SELECT course_code, course_name FROM tblmodules";
+                        $result = mysqli_query($conn, $sql);
+                        while($row = mysqli_fetch_assoc($result)) {
+                            echo "<option value='" . $row['course_code'] . "'>" . $row['course_code'] . "</option>";
+                        }
+                    ?>
+
+                </select>
             </section>
 
             <section id="lecturer-field-container">
                 <label for="current_module">Current Module</label>
                 <select name="current_module" id="current_module">
-                    <option value="">--Select Current Module--</option>
-                    <option value="data-structures">Data Structures</option>
-                    <option value="algorithms">Algorithms</option>
-                    <option value="database-systems">Database Systems</option>
+                    <?php
+                        require "config/config.php";
+                        $sql = "SELECT course_code, course_name FROM tblmodules";
+                        $result = mysqli_query($conn, $sql);
+                        while($row = mysqli_fetch_assoc($result)) {
+                            echo "<option value='" . $row['course_name'] . "'>". $row['course_name'] . "</option>";
+                        }
+                    ?>
+
                 </select>
             </section>
 
             <section id="lecturer-field-container">
                 <label>Current Year</label>
-                <input type="text" value="2026" readonly>
+                <input type="text" value="" id="yearBox" readonly><script>yearBox.value=new Date().getFullYear()</script>
             </section>
-
+            <div id="lecturer-btn-container">
+                    <button type="submit" name="lecturer-submit-btn"><i class="fa fa-save"></i> Submit</button>
+                    <button type="reset" name="lecturer-reset-btn"><i class="fa fa-undo"></i> Reset</button>
+            </div>
         </form>
 
-        <div id="lecturer-btn-container">
-            <button type="submit"><i class="fa fa-save"></i> Submit</button>
-            <button type="reset"><i class="fa fa-undo"></i> Reset</button>
-        </div>
+  
 
     </div>
 
-    <!-- STUDENT SECTION -->
     <div id="students-details-container">
 
-        <!-- LEFT INPUT FORM -->
         <div id="students-input-container">
 
             <h2>
@@ -110,42 +192,52 @@
                 </section>
 
                 <section id="student-field-container">
-                    <label for="student-name">Full Name</label>
-                    <input type="text" id="student-name" value="Promise Siafwiyo" readonly>
+                    <label for="student-name">First Name</label>
+                    <input type="text" id="student-name" value="" name="student_name" >
+                </section>
+
+                <section id="student-field-container">
+                    <label for="student-middle-name">Middle Name</label>
+                    <input type="text" id="student-middle-name" value="" name="student_middle_name" >
+                </section>
+
+                <section id="student-field-container">
+                    <label for="student-surname">Surname</label>
+                    <input type="text" id="student-surname" value="" name="student_surname" >
                 </section>
 
                 <section id="student-field-container">
                     <label>Current Part</label>
-                    <input type="text" value="2.1" readonly>
+                    <input type="text" value="<?php echo $correct_current_part; ?>"  name="current_part">
                 </section>
 
                 <section id="student-field-container">
                     <label>Course Code</label>
-                    <input type="text" value="SCS2104" readonly>
+                    <input type="text" value="<?php echo $correct_course_code; ?>"  name="course_code">
                 </section>
 
                 <section id="student-field-container">
-                    <label>Current Module</label>
-                    <input type="text" value="Data Structures" readonly>
+                    <label>Course Name</label>
+                    <input type="text" value="<?php echo $correct_course_name; ?>"  name="course_name">
                 </section>
 
                 <section id="student-field-container">
                     <label>Final Mark</label>
-                    <input type="text" name="final_mark" value="74">
+                    <input type="text" name="final_mark" value="" >
                 </section>
 
                 <section id="student-field-container">
                     <label>Grade</label>
-                    <input type="text" value="2.1" readonly>
+                    <input type="text" value=""  name="grade">
                 </section>
 
-            </form>
 
-            <div id="lecturer-btn-container">
-                <button><i class="fa fa-save"></i> Save</button>
-                <button><i class="fa fa-edit"></i> Update</button>
-                <button><i class="fa fa-undo"></i> Reset</button>
-            </div>
+                <div id="lecturer-btn-container">
+                    <button name="mark-save-btn"><i class="fa fa-save" ></i> Save</button>
+                    <button><i class="fa fa-edit"></i> Update</button>
+                    <button><i class="fa fa-undo"></i> Reset</button>
+                </div>
+            </form>
 
         </div>
 
@@ -181,52 +273,56 @@
             </div>
 
             <div id="student-table-container">
-                <table border="1">
-                    <thead>
-                        <tr>
-                            <th>Student ID</th>
-                            <th>Full Name</th>
-                            <th>Current Part</th>
-                            <th>Course Code</th>
-                            <th>Current Module</th>
-                            <th>Final Mark</th>
-                            <th>Grade</th>
-                        </tr>
-                    </thead>
+                 <?php
 
-                    <tbody>
-                        <tr>
-                            <td>111111111</td>
-                            <td>Promise Siafwiyo</td>
-                            <td>2.1</td>
-                            <td>SCS2104</td>
-                            <td>Web Development</td>
-                            <td>74</td>
-                            <td>2.1</td>
-                        </tr>
+        
+    require "config/config.php";
 
-                        <tr>
-                            <td>222222222</td>
-                            <td>John Doe</td>
-                            <td>2.1</td>
-                            <td>SCS2104</td>
-                            <td>Web Development</td>
-                            <td>85</td>
-                            <td>1</td>
-                        </tr>
+      if($_SERVER["REQUEST_METHOD"] == "POST") {
 
-                        <tr>
-                            <td>333333333</td>
-                            <td>Jane Smith</td>
-                            <td>2.1</td>
-                            <td>SCS2104</td>
-                            <td>Web Development</td>
-                            <td>90</td>
-                            <td>1</td>
-                        </tr>
 
-                    </tbody>
-                </table>
+      echo "<table>";
+                echo "<thead>";
+                    echo "<tr>";
+                        echo "<th>Student ID</th>";
+                        echo "<th>Full Name</th>";
+                        echo "<th>Middle Name</th>";
+                        echo "<th>Surname</th>";
+                        echo "<th>Current Part</th>";
+                        echo "<th>Course Code</th>";
+                        echo "<th>Course Name</th>";
+                        echo "<th>Final Mark</th>";
+                        echo "<th>Grade</th>";
+                    echo "</tr>";
+
+                echo "</thead>";
+
+                echo "<tbody>";
+                    $sql2 = "SELECT * FROM " . $_SESSION["tablename"];
+                    $result = mysqli_query($conn, $sql2);
+                    while($row = mysqli_fetch_assoc($result)) {
+                        echo "<tr>";
+                            echo "<td>" . $row["course_code"] . "</td>";
+                            echo "<td>" . $row["course_name"] . "</td>";
+                            echo "<td>" . $row["lecturer_id"] . "</td>";
+                            echo "<td>" . $row["lecturer_name"] . "</td>";
+                            echo "<td>" . $row["lecturer_middle_name"] . "</td>";
+                            echo "<td>" . $row["lecturer_surname"] . "</td>";
+                            echo "<td>" . $row["department"] . "</td>";
+                        echo "</tr>";
+                    }
+                echo "</tbody>";
+
+            echo "</table>";
+
+
+      }
+    
+
+
+    ?>
+        
+
             </div>
 
         </div>

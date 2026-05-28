@@ -1,20 +1,22 @@
 <?php 
 
     require "config/config.php";
+
     if($_SERVER["REQUEST_METHOD"] == "POST") {
-        $student_number = $_POST["student_number"];
+
+        $student_id = $_POST["student_id"] ?? '';
         $password = $_POST["password"];
 
-        $sql = "SELECT * FROM students WHERE student_number = '$student_number' AND password = '$password'";
+        $sql = "SELECT * FROM tblstudents WHERE student_id = '$student_id' AND password = '$password'";
         $result = mysqli_query($conn, $sql);
 
         if(mysqli_num_rows($result) == 1) {
             session_start();
-            $_SESSION["student_number"] = $student_number;
-            header("Location: Student-Home.php");
+            $_SESSION["student_id"] = $student_id;
+            header("Location: Student-Dashboard.php");
             exit();
         } else {
-            echo "<script>alert('Invalid student number or password. Please try again.');</script>";
+            echo "<script>alert('Invalid student ID or password. Please try again.');</script>";
         }
     }
 
@@ -54,7 +56,7 @@
             <form method="POST" >
 
                 <div id="textbox-container">
-                    <input type="text" name="student_number" placeholder="Student Number" required>
+                    <input type="text" name="student_id" placeholder="Student ID" required>
                     <input type="password" name="password" placeholder="Password" required>
                 </div>
 
