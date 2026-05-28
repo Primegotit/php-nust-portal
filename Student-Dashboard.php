@@ -7,33 +7,56 @@
     $current_national_id = "";
     $current_gender  = "";
     $current_country = "";
+    $current_dob = "";
     $current_city = "";
     $current_address = "";
     $current_phone_number = "";
     $current_email = "";
     $current_department = "";
     $current_degree = "";
-    
+    $current_part = "2.1";
+
     require "config/config.php";
 
         $sql = "SELECT * FROM tblstudents WHERE student_id = '$current_student_id'";
         $result = mysqli_query($conn, $sql);
 
         if(mysqli_num_rows($result) == 1) {
-            session_start();
-            $_SESSION["national_id"] = $current_national_id;
-            $_SESSION["student_first_name"] = $current_student_first_name;
-            $_SESSION["student_middle_name"] = $current_student_middle_name;
-            $_SESSION["student_last_name"] = $current_student_last_name;
-            $_SESSION["student_gender"] = $current_gender;
+                while($row = mysqli_fetch_assoc($result)) {
+                    $current_student_first_name = $row["first_name"];
+                    $current_student_middle_name = $row["middle_name"];
+                    $current_student_last_name = $row["last_name"];
+                    $current_national_id = $row["national_id"];
+                    $current_gender = $row["gender"];
+                    $current_dob = $row["dob"];
+                    $current_country = $row["country"];
+                    $current_city = $row["city"];
+                    $current_address = $row["address"];
+                    $current_phone_number = $row["phone_number"];
+                    $current_email = $row["email"];
+                    $current_department = $row["department"];
+                    $current_degree = $row["degree"];
 
+                    $_SESSION["national_id"] = $current_national_id;
+                    $_SESSION["student_first_name"] = $current_student_first_name;
+                    $_SESSION["student_middle_name"] = $current_student_middle_name;
+                    $_SESSION["student_last_name"] = $current_student_last_name;
+                    $_SESSION["student_gender"] = $current_gender;
+                    $_SESSION["student_dob"] = $current_dob;
+                    $_SESSION["student_country"] = $current_country;
+                    $_SESSION["student_city"] = $current_city;
+                    $_SESSION["student_address"] = $current_address;
+                    $_SESSION["student_phone_number"] = $current_phone_number;
+                    $_SESSION["student_email"] = $current_email;
+                    $_SESSION["student_department"] = $current_department;
+                    $_SESSION["student_degree"] = $current_degree;
 
+                }
 
-            header("Location: Student-Dashboard.php");
-            exit();
+ 
         } else {
-            echo "<script>alert('Invalid student ID or password. Please try again.');</script>";
         }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,6 +66,7 @@
     <link rel="stylesheet" href="Student-Dashboard.css">
     <link rel="stylesheet" href="global.css">
     <link rel="stylesheet" href="forms.css">
+    <link rel="stylesheet" href="index.css">
      
 </head>
 <body>
@@ -83,8 +107,8 @@
         <aside id="sidebar" style="display:none;">
             <div id="student-card">
                 <img src="/me1.png" id="student-dp">
-                <h4 form="student-form">N02528961Y</h4>
-                <h4 form="student-form">Promise Siafwiyo</h4>
+                <h4 form="student-form" value=""><?php echo $current_national_id; ?></h4>
+                <h4 form="student-form" value=""><?php echo $current_student_first_name; ?> <?php echo $current_student_middle_name; ?> <?php echo $current_student_last_name; ?></h4>
             </div>
 
             <button>Portal Dashboard</button>
@@ -108,15 +132,14 @@
                     <h3>Personal Information</h3>
 
                     <table>
-                        <tr><td>Name</td><td form="student-form">Promise Siafwiyo</td></tr>
-                        <tr><td>ID Number</td><td form="student-form">08-9905455555</td></tr>
-                        <tr><td>City</td><td form="student-form">Bulawayo, Nkulumane</td></tr>
-                        <tr><td>Country</td><td form="student-form">Zimbabwe</td></tr>
+                        <tr><td>Name</td><td form="student-form" ><?php echo $current_student_first_name; ?> <?php echo $current_student_middle_name; ?> <?php echo $current_student_last_name; ?></td></tr>
+                        <tr><td>ID Number</td><td form="student-form"><?php echo $current_national_id; ?></td></tr>
+                        <tr><td>City</td><td form="student-form"><?php echo $current_city; ?></td></tr>
+                        <tr><td>Country</td><td form="student-form"><?php echo $current_country; ?></td></tr>
 
                         <tbody id="personal-extra" class="hidden">
-                            <tr><td>Gender</td><td form="student-form">Male</td></tr>
-                            <tr><td>Date of Birth</td><td form="student-form">05-04-2005</td></tr>
-                            <tr><td>Place of Birth</td><td form="student-form">Zimbabwe</td></tr>
+                            <tr><td>Gender</td><td form="student-form"><?php echo $current_gender; ?></td></tr>
+                            <tr><td>Date of Birth</td><td form="student-form"><?php echo $current_dob; ?></td></tr>
                         </tbody>
                     </table>
 
@@ -128,13 +151,13 @@
                     <h3>Academic Details</h3>
 
                     <table>
-                        <tr><td>Student Number</td><td form="student-form">N02528961Y</td></tr>
-                        <tr><td>Programme</td><td form="student-form">Computer Science</td></tr>
-                        <tr><td>Year</td><td form="student-form">2026</td></tr>
-                        <tr><td>Part</td><td form="student-form">2.1</td></tr>
+                        <tr><td>Student Number</td><td form="student-form"><?php echo $current_student_id; ?></td></tr>
+                        <tr><td>Programme</td><td form="student-form"><?php echo $current_degree; ?></td></tr>
+                        <tr><td>Year</td><td form="student-form"  id="yearBox"><script>document.getElementById("yearBox").textContent = new Date().getFullYear();</script></td></tr>
+                        <tr><td>Part</td><td form="student-form"><?php echo $current_part; ?></td></tr>
 
                         <tbody id="academic-extra" class="hidden">
-                            <tr><td>Semester</td><td>1</td></tr>
+                            <tr><td>Semester</td><td><?php echo $current_part[0]; ?></td></tr>
                         </tbody>
                     </table>
 
@@ -172,10 +195,10 @@
                     <h3>Financial Details</h3>
 
                     <table>
-                        <tr><td>Name</td><td form="student-form">Promise Siafwyo</td></tr>
-                        <tr><td>ID</td><td form="student-form">08-9905455555</td></tr>
-                        <tr><td>City</td><td form="student-form">Bulawayo</td></tr>
-                        <tr><td>Country</td><td form="student-form">Zimbabwe</td></tr>
+                        <tr><td>Name</td><td form="student-form"><?php echo $current_student_first_name; ?> <?php echo $current_student_middle_name; ?> <?php echo $current_student_last_name; ?></td></tr>
+                        <tr><td>ID</td><td form="student-form"><?php echo $current_student_id; ?></td></tr>
+                        <tr><td>City</td><td form="student-form"><?php echo $current_city; ?></td></tr>
+                        <tr><td>Country</td><td form="student-form"><?php echo $current_country; ?></td></tr>
                     </table>
                 </div>
 

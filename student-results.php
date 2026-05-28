@@ -1,3 +1,65 @@
+<?php
+
+    session_start();
+    $current_student_id = $_SESSION["student_id"];
+    $current_student_first_name = "";
+    $current_student_middle_name = "";
+    $current_student_last_name = "";
+    $current_national_id = "";
+    $current_gender  = "";
+    $current_country = "";
+    $current_dob = "";
+    $current_city = "";
+    $current_address = "";
+    $current_phone_number = "";
+    $current_email = "";
+    $current_department = "";
+    $current_degree = "";
+    $current_part = "2.1";
+
+    require "config/config.php";
+
+        $sql = "SELECT * FROM tblstudents WHERE student_id = '$current_student_id'";
+        $result = mysqli_query($conn, $sql);
+
+        if(mysqli_num_rows($result) == 1) {
+                while($row = mysqli_fetch_assoc($result)) {
+                    $current_student_first_name = $row["first_name"];
+                    $current_student_middle_name = $row["middle_name"];
+                    $current_student_last_name = $row["last_name"];
+                    $current_national_id = $row["national_id"];
+                    $current_gender = $row["gender"];
+                    $current_dob = $row["dob"];
+                    $current_country = $row["country"];
+                    $current_city = $row["city"];
+                    $current_address = $row["address"];
+                    $current_phone_number = $row["phone_number"];
+                    $current_email = $row["email"];
+                    $current_department = $row["department"];
+                    $current_degree = $row["degree"];
+
+                    $_SESSION["national_id"] = $current_national_id;
+                    $_SESSION["student_first_name"] = $current_student_first_name;
+                    $_SESSION["student_middle_name"] = $current_student_middle_name;
+                    $_SESSION["student_last_name"] = $current_student_last_name;
+                    $_SESSION["student_gender"] = $current_gender;
+                    $_SESSION["student_dob"] = $current_dob;
+                    $_SESSION["student_country"] = $current_country;
+                    $_SESSION["student_city"] = $current_city;
+                    $_SESSION["student_address"] = $current_address;
+                    $_SESSION["student_phone_number"] = $current_phone_number;
+                    $_SESSION["student_email"] = $current_email;
+                    $_SESSION["student_department"] = $current_department;
+                    $_SESSION["student_degree"] = $current_degree;
+
+                }
+
+ 
+        } else {
+        }
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,27 +102,27 @@
                                 <th>
                                     <table>
                                         <tr>
-                                            <td>National ID : 123456</td>
+                                            <td>National ID : <?php echo $current_national_id; ?></td>
                                         </tr>
 
                                         <tr>
-                                            <td>Name : Promise Siafwiyo</td>
+                                            <td>Name : <?php echo $current_student_first_name . " " . $current_student_middle_name . " " . $current_student_last_name; ?></td>
                                         </tr>
 
                                         <tr>
-                                            <td>Department : Computer Science</td>
+                                            <td>Department : <?php echo $current_department; ?></td>
                                         </tr>
 
                                         <tr>
-                                            <td>DOB : 05/04/2005</td>
+                                            <td>DOB : <?php echo $current_dob; ?></td>
                                         </tr>
 
                                         <tr>
-                                            <td>Gender : Male</td>
+                                            <td>Gender : <?php echo $current_gender; ?></td>
                                         </tr>
 
                                         <tr>
-                                            <td>Degree : Bachelor's Degree in Computer Science</td>
+                                            <td>Degree : <?php echo $current_degree; ?></td>
                                         </tr>
                                     </table>
                                 </th>
@@ -69,23 +131,23 @@
                                     <table>
 
                                         <tr>
-                                            <td>Student Number : 123456</td>
+                                            <td>Student Number : <?php echo $current_student_id; ?></td>
                                         </tr>
 
                                         <tr>
-                                            <td>Country : Zimbabwe</td>
+                                            <td>Country : <?php echo $current_country; ?></td>
                                         </tr>
 
                                         <tr>
-                                            <td>City : Bulawayo</td>
+                                            <td>City : <?php echo $current_city; ?></td>
                                         </tr>
 
                                         <tr>
-                                            <td>Address : Magwegwe North</td>
+                                            <td>Address : <?php echo $current_address; ?></td>
                                         </tr>
 
                                         <tr>
-                                            <td>Phone Number : 0789880071</td>
+                                            <td>Phone Number : <?php echo $current_phone_number; ?></td>
                                         </tr>
 
                                     </table>
