@@ -78,8 +78,8 @@
         <div id="header-things">
 
             <div id="left-top-container">
-                <button onclick="toggleAside()">show menu <
-                    <i class="fa fa-bars"></i>
+                <button onclick="toggleAside()">
+                    <img src="public/stack_14035097.png" alt="">
                 </button>
 
                 <h3>
@@ -111,12 +111,13 @@
                 <h4 form="student-form" value=""><?php echo $current_student_first_name; ?> <?php echo $current_student_middle_name; ?> <?php echo $current_student_last_name; ?></h4>
             </div>
 
-            <button>Portal Dashboard</button>
-            <button >New Registration</button>
-            <button>Payments History</button>
-            <button>Continuous Assessment</button>
-            <button ><a href="student-results.php">Examinations Results</a></button>
-            <button>Modules Information</button>
+            <a href="portal-dashboard.php" id="btns">Portal Dashboard</a>
+            <a href="Register-Form.php" id="btns">New Registration</a>
+            <a href="payments-history.php" id="btns">Payments History</a>
+            <a href="student-results.php" id="btns">Examinations Results</a>
+            <a href="modules-information.php" id="btns">Modules Information</a>
+            <a href="Welcome-page.php" id="btns">Logout</a>
+
         </aside>
 
         <!-- CONTENT -->
