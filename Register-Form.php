@@ -53,6 +53,12 @@
 
     <div id="bottom-border"></div>
 
+    <div id=modules-info>
+                    <h3 style="text-align:center;">Welcome ⚡</h3>
+                    <br>
+                    <p style="text-align:center;">This is a registration form where an admin can register new students or a students can register their own modules</p>
+                </div>
+
 
     <div id="students-details-container">
 

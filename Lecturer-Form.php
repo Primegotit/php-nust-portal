@@ -89,6 +89,11 @@ $tablename = "";
     </nav>
 
     <div id="bottom-border"></div>
+       <div id=modules-info>
+                    <h3 style="text-align:center;">Welcome ⚡</h3>
+                    <br>
+                    <p style="text-align:center;">This is where a lecturer enters their details first, then underneath there's a form to enter all student's mark</p>
+        </div>
 
     <!-- MAIN CONTENT -->
     <div id="main-content-container">
@@ -168,8 +173,8 @@ $tablename = "";
                 <input type="text" value="" id="yearBox" readonly><script>yearBox.value=new Date().getFullYear()</script>
             </section>
             <div id="lecturer-btn-container">
-                    <button type="submit" name="lecturer-submit-btn"><i class="fa fa-save"></i> Submit</button>
-                    <button type="reset" name="lecturer-reset-btn"><i class="fa fa-undo"></i> Reset</button>
+                    <button type="submit" name="lecturer-submit-btn"><i class="fa fa-save"></i>✅ Submit</button>
+                    <button type="reset" name="lecturer-reset-btn"><i class="fa fa-undo"></i>🔄 Reset</button>
             </div>
         </form>
 
@@ -230,13 +235,16 @@ $tablename = "";
                 <section id="student-field-container">
                     <label>Grade</label>
                     <input type="text" value=""  name="grade">
+                    <button name="generate-grade"><i class="fa fa-edit"></i>Generate Grade</button>
+
                 </section>
 
 
                 <div id="lecturer-btn-container">
-                    <button name="mark-save-btn"><i class="fa fa-save" ></i> Save</button>
-                    <button><i class="fa fa-edit"></i> Update</button>
-                    <button><i class="fa fa-undo"></i> Reset</button>
+                    <button name="mark-save-btn"><i class="fa fa-save" ></i>  ✅ Save </button>
+                    <button name="mark-update-btn"><i class="fa fa-edit"></i> 🔧
+                     Update </button>
+                    <button name="mark-delete-btn><i class="fa fa-undo"></i> 🔄 Reset </button>
                 </div>
             </form>
 
@@ -265,8 +273,8 @@ $tablename = "";
                     </span>
 
                     <div id="buttton-conn">
-                        <button type="submit" name="btn-search"><i class="fa fa-search"></i> Search</button>
-                        <button type="submit" name="btn-reset"><i class="fa fa-undo"></i> Reset</button>
+                        <button type="submit" name="btn-search"><i class="fa fa-search"></i>🔎 Search</button>
+                        <button type="submit" name="btn-reset"><i class="fa fa-undo"></i>🔄 Reset</button>
                     </div>
 
                 </form>

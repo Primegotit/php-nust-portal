@@ -22,6 +22,18 @@
     gap: 10px;
 }
 
+#modules-info{
+    padding:20px;
+    border-bottom:4px solid var(--primary-color);
+    width: 70%;
+    margin: auto;
+}
+
+#modules-info h3{
+    font-size:30px;
+}
+
+
 
 #main-content-container{
     background: var(--dark-theme-back);

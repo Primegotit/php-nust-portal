@@ -199,9 +199,9 @@
 
                         <select name="department" form="student-personal-details">
                             <option value="">-- Select Department --</option>
-                            <option value="computer_science">Department of Computer Science</option>
-                            <option value="mathematics">Department of Mathematics</option>
-                            <option value="physics">Department of Physics</option>
+                            <option value="Computer Science">Department of Computer Science</option>
+                            <option value="Mathematics">Department of Mathematics</option>
+                            <option value="Physics">Department of Physics</option>
                         </select>
                     </div>
 
@@ -211,11 +211,11 @@
 
                         <select name="degree" form="student-personal-details">
                             <option value="">-- Select Degree --</option>
-                            <option value="bachelor">Bachelor's Degree in Computer Science</option>
-                            <option value="master">Bachelor's Degree in Mathematics</option>
-                            <option value="engineering">Bachelor's Degree in Electrical Engineering</option>
-                            <option value="informatics">Bachelor's Degree in Informatics</option>
-                            <option value="physics">Bachelor's Degree in Physics</option>
+                            <option value="Computer Science">Bachelor's Degree in Computer Science</option>
+                            <option value="Applied Mathematics">Bachelor's Degree in Applied Mathematics</option>
+                            <option value="Electrical Engineering">Bachelor's Degree in Electrical Engineering</option>
+                            <option value="Informatics">Bachelor's Degree in Informatics</option>
+                            <option value="Applied Physics">Bachelor's Degree in Applied Physics</option>
                         </select>
 
                     </div>
@@ -463,9 +463,13 @@
 
     function generateStudentID() {
 
-        let randomID = "CS" + Math.floor(Math.random() * 1000000);
+        let letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        let randomLetter = letters[Math.floor(Math.random() * letters.length)];
+
+        let randomID = "N" + Math.floor(Math.random() * 1000000) + randomLetter;
 
         document.getElementById("student-id").value = randomID;
+
     }
 
     function generatePassword() {
