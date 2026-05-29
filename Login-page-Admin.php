@@ -4,10 +4,10 @@
 
     if($_SERVER["REQUEST_METHOD"] == "POST") {
 
-        $student_id = $_POST["student_id"] ?? '';
+        $admin_id = $_POST["admin_id"] ?? '';
         $password = $_POST["password"];
 
-        $sql = "SELECT * FROM tblstaff WHERE student_id = '$student_id' AND password = '$password'";
+        $sql = "SELECT * FROM tblstaff WHERE staff_id = '$admingi_id' AND password = '$password'";
         $result = mysqli_query($conn, $sql);
 
         if(mysqli_num_rows($result) == 1) {
@@ -56,8 +56,8 @@
             <form method="POST" >
 
                 <div id="textbox-container">
-                    <input type="text" name="student_id" placeholder="Student ID" required>
-                    <input type="password" name="password" placeholder="Password" required>
+                    <input type="text" name="admin_id" placeholder="ADMIN ID" required>
+                    <input type="password" name="password" placeholder="PASSWORD" required>
                 </div>
 
                 <br>
