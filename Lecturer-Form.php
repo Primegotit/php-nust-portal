@@ -72,9 +72,10 @@ $tablename = "";
 <head>
     <meta charset="UTF-8">
     <title>Lecturer Form</title>
-    <link rel="stylesheet" href="LecturerForm.css">
     <link rel="stylesheet" href="global.css">
     <link rel="stylesheet" href="forms.css">
+    <link rel="stylesheet" href="LecturerForm.css">
+
 </head>
 <body>
 
@@ -95,7 +96,7 @@ $tablename = "";
         <h2 id="instr">
             <i class="fa fa-user"></i> Enter details
         </h2>
-
+        <br>
         <form method="POST" action="">
             
             <section id="lecturer-field-container">

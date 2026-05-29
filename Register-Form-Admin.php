@@ -29,6 +29,40 @@
         
     }
 
+    if(isset($_POST["btn-update"])) {
+        $student_id = $_POST["student_id"] ?? '';
+        $module1 = $_POST["module1"] ?? '';
+        $module2 = $_POST["module2"] ?? '';
+        $module3 = $_POST["module3"] ?? '';
+        $module4 = $_POST["module4"] ?? '';
+        $module5 = $_POST["module5"] ?? '';
+        $module6 = $_POST["module6"] ?? '';
+        $module7 = $_POST["module7"] ?? '';
+        $module8 = $_POST["module8"] ?? '';
+
+        $sql_update = "UPDATE tblregister SET 
+                        module_1='$module1', 
+                        module_2='$module2', 
+                        module_3='$module3', 
+                        module_4='$module4', 
+                        module_5='$module5', 
+                        module_6='$module6', 
+                        module_7='$module7', 
+                        module_8='$module8' 
+                        WHERE student_id='$student_id'";
+
+        if(mysqli_query($conn, $sql_update)) {
+            echo "<script>alert('Record updated successfully!');</script>";
+        } else {
+            echo "<script>alert('Error updating record: " . mysqli_error($conn) . "');</script>";
+        }
+    }
+
+    if(isset($_POST["btn-reset"])) {
+        header("Location: " . $_SERVER['PHP_SELF']);
+        exit();  
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -47,7 +81,7 @@
     <!-- TOP HEADER -->
     <nav id="top-heading">
         <h2>
-            Register courses<i class="fa fa-envelope"></i>
+            Register courses As an Admin<i class="fa fa-envelope"></i>
         </h2>
     </nav>
 
@@ -199,8 +233,8 @@
 
                 <div id="lecturer-btn-container">
                     <button name="mark-save-btn"><i class="fa fa-save" ></i> Save</button>
-                    <button><i class="fa fa-edit"></i> Update</button>
-                    <button><i class="fa fa-undo"></i> Reset</button>
+                    <button name="btn-update"><i class="fa fa-edit"></i> Update</button>
+                    <button name="btn-reset"><i class="fa fa-undo"></i> Reset</button>
                 </div>
             </form>
 
