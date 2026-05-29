@@ -83,7 +83,6 @@
     box-shadow: var(--mybox-shadow);
     border-radius: 10px;
     transition: all 0.3s;
-    justify-content: center;
 }
 
 
@@ -92,13 +91,14 @@
 }
 
 #destiny-btn p{
-    font-size: 35px;
+    font-size: 30px;
     display: flex;
-    justify-content: center;
+    justify-content: right;
     width: 100%;
 
 }
 #destiny-btn h2{
+    height: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
