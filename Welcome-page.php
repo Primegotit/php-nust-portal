@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="forms.css">
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 
@@ -17,7 +16,7 @@
     <!-- HEADER -->
     <div id="heading-container">
 
-        <img src="/logo_nust_png.png" alt="NUST Logo" id="nust-logo">
+        <img src="public/logo_nust_png.png" alt="NUST Logo" id="nust-logo">
 
         <ul>
             <li><a href="index.php">Home</a></li>
@@ -61,14 +60,16 @@
 
         </div>
 
-        <!-- IMAGE SECTION -->
         <div id="image-container">
-            <!-- Optional image can go here -->
-            <!-- <img src="/logo_nust_png.png" alt="NUST"> -->
+            <img src="public/logo_nust_png.png" alt="NUST">
         </div>
 
     </div>
 
+
+        <div id="button-container-welcome">
+            <a href="Path-selector.php">Let's get started</a>
+        </div>
 </div>
 
 </body>

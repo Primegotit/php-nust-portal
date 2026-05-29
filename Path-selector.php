@@ -30,7 +30,7 @@
                         <p>👤</p>
                         <h2>Student</h2>
                     </a>
-                    <a href="Admin-dashboard.php" id="destiny-btn">
+                    <a href="Login-page-Admin.php" id="destiny-btn">
                         <p>🛡️</p>
                          <h2>Administrator</h2>
                     </a>
