@@ -77,6 +77,26 @@
     width: 100%;
 }
 
+#btn-container{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+#btn-container button{
+    background: var(--primary-color);
+    width: 200px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:10px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 500;
+}
+
 
 @media (max-width: 768px) {
  

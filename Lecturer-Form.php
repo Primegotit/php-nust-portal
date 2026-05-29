@@ -246,12 +246,11 @@ $tablename = "";
 
             <div id="student-search-container">
 
-                <form method="GET" action="">
+                <form method="POSt" action="">
 
                     <span>
                         <label>Search by</label>
-                        <select name="search_by">
-                            <option value="">--Select a field--</option>
+                        <select name="search_criteria">
                             <option value="student_id">Student ID</option>
                             <option value="fullname">Full Name</option>
                             <option value="final_mark">Final Mark</option>
@@ -265,8 +264,8 @@ $tablename = "";
                     </span>
 
                     <div id="buttton-conn">
-                        <button type="submit"><i class="fa fa-search"></i> Search</button>
-                        <button type="reset"><i class="fa fa-undo"></i> Reset</button>
+                        <button type="submit" name="btn-search"><i class="fa fa-search"></i> Search</button>
+                        <button type="submit" name="btn-reset"><i class="fa fa-undo"></i> Reset</button>
                     </div>
 
                 </form>
@@ -275,13 +274,24 @@ $tablename = "";
             <div id="student-table-container">
                  <?php
 
+                 if(isset($_POST["btn-reset"])) {
+                    $sql2 = "SELECT * FROM " . $_SESSION["tablename"];
+
+                 }
+
+        if(isset($_POST["btn-search"])) {
+            $search_criteria = $_POST["search_criteria"] ?? '';
+            $search_value = $_POST["search_value"] ?? '';
+
+            $sql2 = "SELECT * FROM " . $_SESSION["tablename"] . " WHERE " . $search_criteria . " LIKE '%" . $search_value . "%'";
+        } else {
+            $sql2 = "SELECT * FROM " . $_SESSION["tablename"];
+        }
+
         
     require "config/config.php";
 
-      if($_SERVER["REQUEST_METHOD"] == "POST") {
-
-
-      echo "<table>";
+        echo "<table>";
                 echo "<thead>";
                     echo "<tr>";
                         echo "<th>Student ID</th>";
@@ -298,7 +308,7 @@ $tablename = "";
                 echo "</thead>";
 
                 echo "<tbody>";
-                    $sql2 = "SELECT * FROM " . $_SESSION["tablename"];
+                    // $sql2 = "SELECT * FROM " . $_SESSION["tablename"];
                     $result = mysqli_query($conn, $sql2);
                     while($row = mysqli_fetch_assoc($result)) {
                         echo "<tr>";
@@ -318,7 +328,7 @@ $tablename = "";
             echo "</table>";
 
 
-      }
+    
     
 
 

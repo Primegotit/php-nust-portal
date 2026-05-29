@@ -1,7 +1,7 @@
 <?php
 
     require "config/config.php";
-
+    
         if(isset($_POST['btn-save-module'])) {
             $course_code = $_POST['course_code'] ?? '';
             $course_name = $_POST['course_name'] ?? '';
@@ -35,7 +35,47 @@
 
             echo "<script>alert('Module saved successfully!');</script>";
         }
+if(isset($_POST['btn-delete-module'])) {
 
+    $course_code = trim($_POST['course_code'] ?? '');
+    $course_name = trim($_POST['course_name'] ?? '');
+
+    // Create table name
+    $table_name = strtolower($course_code . '_' . $course_name);
+
+    // Replace spaces with underscores
+    $table_name = str_replace(' ', '_', $table_name);
+
+    // Delete module record
+    $sql = "DELETE FROM tblmodules 
+            WHERE course_code='$course_code' 
+            AND course_name='$course_name'";
+
+    if(mysqli_query($conn, $sql)) {
+
+        // Drop table
+        $sql_drop_table = "DROP TABLE IF EXISTS `$table_name`";
+
+        if(mysqli_query($conn, $sql_drop_table)) {
+
+            echo "<script>alert('Module deleted successfully!');</script>";
+
+        } else {
+
+            echo mysqli_error($conn);
+        }
+
+    } else {
+
+        echo mysqli_error($conn);
+    }
+}
+
+
+if(isset($_POST['btn-reset'])) {
+       header("Location: " . $_SERVER['PHP_SELF']);
+        exit();  
+}
 ?>
 
 <!DOCTYPE html>
@@ -69,6 +109,7 @@
 
             <p>
                 This is a form which allows the admin to add new courses to the system.
+                Only input course code and course name to delete a course from the system. 
             </p>
 
             <form method="POST" >
@@ -109,9 +150,15 @@
                 </span>
 
                 <br>
+                <div id="btn-container">
+                    <button type="submit" name="btn-save-module">Save Module</button>
+                    <button type="submit" name="btn-delete-module">Delete Module</button>
+                    <button type="submit" name="btn-reset">Reset Form</button>
 
-                <button type="submit" name="btn-save-module">Save Module</button>
 
+                </div>
+
+                
             </form>
 
         </div>
