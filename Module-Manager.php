@@ -43,9 +43,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Module Manager</title>
-    <link rel="stylesheet" href="Module-manager.css">
     <link rel="stylesheet" href="global.css">
+    <link rel="stylesheet" href="Module-manager.css">
+
     <link rel="stylesheet" href="forms.css">
+
 
 </head>
 <body>
@@ -115,53 +117,46 @@
         </div>
 
         <div id="module-manager-table-container">
-    <?php
+        <?php
 
-        
-    require "config/config.php";
-
-      if($_SERVER["REQUEST_METHOD"] == "POST") {
+            
+            require "config/config.php";
 
 
-      echo "<table>";
-                echo "<thead>";
-                    echo "<tr>";
-                        echo "<th>Course Code</th>";
-                        echo "<th>Course Name</th>";
-                        echo "<th>Lecturer ID</th>";
-                        echo "<th>Lecturer Name</th>";
-                        echo "<th>Lecturer Middle Name</th>";
-                        echo "<th>Lecturer Surname</th>";
-                        echo "<th>Department</th>";
-                    echo "</tr>";
 
-                echo "</thead>";
-
-                echo "<tbody>";
-                    $sql2 = "SELECT * FROM tblmodules";
-                    $result = mysqli_query($conn, $sql2);
-                    while($row = mysqli_fetch_assoc($result)) {
+            echo "<table>";
+                    echo "<thead>";
                         echo "<tr>";
-                            echo "<td>" . $row["course_code"] . "</td>";
-                            echo "<td>" . $row["course_name"] . "</td>";
-                            echo "<td>" . $row["lecturer_id"] . "</td>";
-                            echo "<td>" . $row["lecturer_name"] . "</td>";
-                            echo "<td>" . $row["lecturer_middle_name"] . "</td>";
-                            echo "<td>" . $row["lecturer_surname"] . "</td>";
-                            echo "<td>" . $row["department"] . "</td>";
+                            echo "<th>Course Code</th>";
+                            echo "<th>Course Name</th>";
+                            echo "<th>Lecturer ID</th>";
+                            echo "<th>Lecturer Name</th>";
+                            echo "<th>Lecturer Middle Name</th>";
+                            echo "<th>Lecturer Surname</th>";
+                            echo "<th>Department</th>";
                         echo "</tr>";
-                    }
-                echo "</tbody>";
 
-            echo "</table>";
+                    echo "</thead>";
 
+                    echo "<tbody>";
+                        $sql2 = "SELECT * FROM tblmodules";
+                        $result = mysqli_query($conn, $sql2);
+                        while($row = mysqli_fetch_assoc($result)) {
+                            echo "<tr>";
+                                echo "<td>" . $row["course_code"] . "</td>";
+                                echo "<td>" . $row["course_name"] . "</td>";
+                                echo "<td>" . $row["lecturer_id"] . "</td>";
+                                echo "<td>" . $row["lecturer_name"] . "</td>";
+                                echo "<td>" . $row["lecturer_middle_name"] . "</td>";
+                                echo "<td>" . $row["lecturer_surname"] . "</td>";
+                                echo "<td>" . $row["department"] . "</td>";
+                            echo "</tr>";
+                        }
+                    echo "</tbody>";
 
-      }
-    
+                echo "</table>";
 
-
-    ?>
-        
+        ?>
 
         </div>
 
