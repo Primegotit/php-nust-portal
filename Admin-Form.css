@@ -49,6 +49,9 @@
     justify-content: center;
     padding: 20px;
     gap: 20px;
+    background: var(--primary-color);
+    padding: 10px 40px;
+    color: var(--dark-theme-text-btn);
 }
 
 #top-heading h2{
@@ -67,7 +70,7 @@
 
 }
 
-#Student-personal-details{
+#student-personal-details{
     padding: 15px 20px;
     border: 2px solid var(--primary-color);
     background: var(--dark-theme-background);
@@ -208,7 +211,7 @@ select option{
     text-align: center;
 }
 
-#button-container form #btn2{
+#button-container form .btn2{
     width: 100px;
     height: 40px;
 
@@ -227,7 +230,7 @@ select option{
     font-weight: 500;
 }
 
-#button-container form #btn2:hover{
+#button-container form .btn2:hover{
     scale: 1.06;
 }
 

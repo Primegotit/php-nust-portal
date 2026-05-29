@@ -41,6 +41,35 @@
         echo "<script>alert('Student information saved successfully!');</script>";
     }
 
+    if(isset($_POST['btn-update'])) {
+        $nationalID = $_POST['national-id'];
+        $firstName = $_POST['first-name'];
+        $middleName = $_POST['middle-name'];
+        $lastName = $_POST['last-name'];
+        $gender = $_POST['gender'];
+        $dob = $_POST['dob'];
+        $country = $_POST['country'];
+        $city = $_POST['city'];
+        $address = $_POST['address'];
+        $phoneNumber = $_POST['phone-number'];
+        $email = $_POST['email'];
+        $department = $_POST['department'];
+        $degree = $_POST['degree'];
+        $studentID = $_POST['student-id'];
+        $password = $_POST['password'];
+
+
+
+        $sql = "UPDATE tblstudents 
+            SET first_name='$firstName', middle_name='$middleName', last_name='$lastName', gender='$gender', dob='$dob', country='$country', city='$city', address='$address', phone_number='$phoneNumber', email='$email', department='$department', degree='$degree', student_id='$studentID', password='$password' 
+            WHERE national_id='$nationalID'"; 
+
+        mysqli_query($conn, $sql);
+        header("Location: " . $_SERVER['PHP_SELF']);
+        exit();
+        echo "<script>alert('Student information updated successfully!');</script>";
+    }
+
 ?>
 
 
@@ -52,6 +81,7 @@
     <title>Admin Form</title>
     <link rel="stylesheet" href="Admin-Form.css">
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="global.css">
     <link rel="stylesheet" href="forms.css">
 </head>
 
@@ -229,10 +259,10 @@
                     </h2>
 
                     <span>
-                        <button id="btn-save" name="btn-save" form="student-personal-details">💾 Save</button>
-                        <button id="btn-update" name="btn-update" form="student-personal-details">✏️ Update</button>
-                        <button id="btn-delete" name="btn-delete" form="student-personal-details">🗑️ Delete</button>
-                        <button id="btn-reset" name="btn-reset" form="student-personal-details">↩ Reset</button>
+                        <button id="btn-save" class="btn2" name="btn-save" form="student-personal-details">💾 Save</button>
+                        <button id="btn-update" class="btn2" name="btn-update" form="student-personal-details">✏️ Update</button>
+                        <button id="btn-delete" class="btn2" name="btn-delete" form="student-personal-details">🗑️ Delete</button>
+                        <button id="btn-reset" class="btn2" name="btn-reset" form="student-personal-details">↩ Reset</button>
                     </span>
 
                 </form>
