@@ -7,7 +7,7 @@
         $admin_id = $_POST["admin_id"] ?? '';
         $password = $_POST["password"];
 
-        $sql = "SELECT * FROM tblstaff WHERE staff_id = '$admingi_id' AND password = '$password'";
+        $sql = "SELECT * FROM tblstaff WHERE staff_id = '$admin_id' AND password = '$password'";
         $result = mysqli_query($conn, $sql);
 
         if(mysqli_num_rows($result) == 1) {

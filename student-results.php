@@ -83,6 +83,11 @@
         <div id="bottom-border"></div>
 
         <div id="student-results-envelope">
+               <div id=modules-info>
+                    <h3 style="text-align:center;">Welcome <?php echo $current_student_first_name; ?> <?php echo $current_student_middle_name; ?> <?php echo $current_student_last_name; ?>⚡</h3>
+                    <br>
+                    <p style="text-align:center;">These are your exam results for this semester and the previous semesters, good luck.</p>
+                </div>
 
             <!-- PERSONAL INFO -->
             <div id="student-results-personal-info">

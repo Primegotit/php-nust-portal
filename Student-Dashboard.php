@@ -91,7 +91,7 @@
             <div id="right-top-container">
                 <i class="fa fa-envelope"></i>
                 <button id="logout-btn">
-                    Logout <i class="fa fa-right-from-bracket"></i>
+                   🔓  Logout <i class="fa fa-right-from-bracket"></i>
                 </button>
             </div>
 
@@ -180,35 +180,97 @@
                     <h3>Registered Courses</h3>
                     <br>
 
-                    <table >
-                        <tr><td>Course Code<b></b></td><td><b>Course Name</b></td><td><b>Course Type</b></td></tr>
 
-                        <tr><td>SCS1111</td><td>Intro CS</td><td>Core</td></tr>
-                        <tr><td>SCS1112</td><td>DSA</td><td>Core</td></tr>
-                        <tr><td>SCS1113</td><td>Software Engineering</td><td>Core</td></tr>
+<?php
 
-                        <tbody id="courses-extra" class="hidden">
-                            <tr><td>SCS1114</td><td>Database Systems</td><td>Core</td></tr>
-                            <tr><td>SCS1115</td><td>AI</td><td>Core</td></tr>
-                            <tr><td>SCS1116</td><td>Machine Learning</td><td>Core</td></tr>
-                        </tbody>
-                    </table>
+echo "<table border='1'>";
+echo "<thead>";
+echo "<tr>";
+echo "<th>Course Code</th>";
+echo "<th>Course Name</th>";
+echo "<th>Grade</th>";
+echo "</tr>";
+echo "</thead>";
+echo "<tbody>";
+
+require "config/config.php";
+
+$sql = "SELECT * FROM tblregister WHERE student_id = '$current_student_id'";
+$result = mysqli_query($conn, $sql);
+
+if(mysqli_num_rows($result) == 1) {
+
+    $row = mysqli_fetch_assoc($result);
+
+    // LOOP THROUGH MODULE COLUMNS
+    for($x = 1; $x <= 10; $x++) {
+
+        if(isset($row["module_" . $x])) {
+
+            $current_course_full_name = trim($row["module_" . $x]);
+
+            if($current_course_full_name != "") {
+
+                // RESET VARIABLES
+                $tablename = "";
+                $final_mark = "";
+                $grade = "";
+
+                // SPLIT COURSE CODE AND NAME
+                // Example: SCS2105 Calculus
+                $parts = explode(" ", $current_course_full_name);
+
+                // COURSE CODE
+                $course_code = strtoupper($parts[0]);
+
+                // COURSE NAME
+                $course_name = trim(str_replace($parts[0], "", $current_course_full_name));
+
+                // TABLE NAME SEARCH
+                $module_code = strtolower($parts[0]);
+
+                $sql_table = "SHOW TABLES LIKE '$module_code%'";
+                $tableexists = mysqli_query($conn, $sql_table);
+
+                if(mysqli_num_rows($tableexists) > 0) {
+
+                    $table_row = mysqli_fetch_array($tableexists);
+                    $tablename = $table_row[0];
+
+                    // GET STUDENT RESULTS
+                    $sql_get_results = "SELECT * FROM $tablename WHERE student_id = '$current_student_id'";
+                    $result_get_results = mysqli_query($conn, $sql_get_results);
+
+                    if(mysqli_num_rows($result_get_results) > 0) {
+
+                        $result_row = mysqli_fetch_assoc($result_get_results);
+
+                        $final_mark = $result_row["final_mark"];
+                        $grade = $result_row["grade"];
+                    }
+                }
+
+                // DISPLAY TABLE ROW
+                echo "<tr>";
+                echo "<td>" . $course_code . "</td>";
+                echo "<td>" . $course_name . "</td>";
+                echo "<td>CORE</td>";
+                echo "</tr>";
+            }
+        }
+    }
+}
+
+echo "</tbody>";
+echo "</table>";
+
+?>
 
                     <button onclick="toggleCourses()" id="courses-btn" class="bottom-btn-show-more">Show More</button>
                 </div>
 
                 <!-- FINANCIAL -->
-                <div class="content-box">
-                    <h3>Financial Details</h3>
-                    <br>
-
-                    <table>
-                        <tr><td>Name</td><td form="student-form"><?php echo $current_student_first_name; ?> <?php echo $current_student_middle_name; ?> <?php echo $current_student_last_name; ?></td></tr>
-                        <tr><td>ID</td><td form="student-form"><?php echo $current_student_id; ?></td></tr>
-                        <tr><td>City</td><td form="student-form"><?php echo $current_city; ?></td></tr>
-                        <tr><td>Country</td><td form="student-form"><?php echo $current_country; ?></td></tr>
-                    </table>
-                </div>
+       
 
             </div>
 

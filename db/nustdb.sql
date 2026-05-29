@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 29, 2026 at 04:08 AM
+-- Generation Time: May 29, 2026 at 05:07 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -150,7 +150,7 @@ CREATE TABLE `tblstaff` (
 
 INSERT INTO `tblstaff` (`staff_id`, `first_name`, `middle_name`, `last_name`, `gender`, `dob`, `department`, `phone_number`, `type`, `password`) VALUES
 ('N00', 'blaunx', 'blaunx', 'blaunx', 'male', 'asdlf', 'Computer Science', '08908932', 'Admin', 'N00'),
-('N111', 'Prime', 'Prime', 'Prime', 'Male', 'lkajdsf', 'Computer science', '0809', 'Lecturer', 'N11');
+('N11', 'Prime', 'Prime', 'Prime', 'Male', 'lkajdsf', 'Computer science', '0809', 'Lecturer', 'N11');
 
 -- --------------------------------------------------------
 
