@@ -123,7 +123,11 @@
         <!-- CONTENT -->
         <section id="content-container">
             <form action="" id="student-form" method="POST">
-
+                <div id=modules-info>
+                    <h3 style="text-align:center;">Welcome <?php echo $current_student_first_name; ?> <?php echo $current_student_middle_name; ?> <?php echo $current_student_last_name; ?>⚡</h3>
+                    <br>
+                    <p>This is your student portal that shows you all the information you'll ever need including news updates and exam results.</p>
+                </div>
             </form>
             <!-- PERSONAL + ACADEMIC -->
             <div id="person-and-financial-box">
