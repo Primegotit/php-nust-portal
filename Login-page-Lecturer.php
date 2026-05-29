@@ -4,19 +4,19 @@
 
     if($_SERVER["REQUEST_METHOD"] == "POST") {
 
-        $student_id = $_POST["student_id"] ?? '';
+        $lecturer_id = $_POST["lecturer_id"] ?? '';
         $password = $_POST["password"];
 
-        $sql = "SELECT * FROM tblstudents WHERE student_id = '$student_id' AND password = '$password'";
+        $sql = "SELECT * FROM tblstaff WHERE staff_id = '$lecturer_id' AND password = '$password'";
         $result = mysqli_query($conn, $sql);
 
         if(mysqli_num_rows($result) == 1) {
             session_start();
-            $_SESSION["student_id"] = $student_id;
-            header("Location: Student-Dashboard.php");
+            $_SESSION["lecturer_id"] = $lecturer_id;
+            header("Location: Lecturer-Form.php");
             exit();
         } else {
-            echo "<script>alert('Invalid student ID or password. Please try again.');</script>";
+            echo "<script>alert('Invalid Lecturer ID or password. Please try again.');</script>";
         }
     }
 
@@ -25,7 +25,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Login Page - University Management System</title>
+    <title>Lecturer Login Page - University Management System</title>
     <link rel="stylesheet" href="Login-page.css">
     <link rel="stylesheet" href="global.css">
     <link rel="stylesheet" href="forms.css">
@@ -56,7 +56,7 @@
             <form method="POST" >
 
                 <div id="textbox-container">
-                    <input type="text" name="student_id" placeholder="Student ID" required>
+                    <input type="text" name="lecturer_id" placeholder="Lecturer ID" required>
                     <input type="password" name="password" placeholder="Password" required>
                 </div>
 

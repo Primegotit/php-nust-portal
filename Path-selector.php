@@ -35,7 +35,7 @@
                          <h2>Administrator</h2>
                     </a>
 
-                    <a href="Lecturer-Form.php" id="destiny-btn">
+                    <a href="Login-page-Lecturer.php" id="destiny-btn">
                         <p>👩‍🏫</p>
                          <h2>Lecturer</h2>
                     </a>

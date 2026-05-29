@@ -45,16 +45,16 @@
             <!-- TILES -->
             <div id="tiles-container">
                 <ul>
-                    <li class="tile">Secure</li>
-                    <li class="tile">Prominent</li>
                     <li class="tile">Excellence</li>
-                    <li class="tile">Modern</li>
-                    <li class="tile">Disciplined</li>
-                    <li class="tile">Cultural</li>
-                    <li class="tile">Cultural</li>
-                    <li class="tile">Cultural</li>
-                    <li class="tile">Cultural</li>
-                    <li class="tile">Cultural</li>
+                    <li class="tile">Innovation</li>
+                    <li class="tile">Leadership</li>
+                    <li class="tile">Knowledge</li>
+                    <li class="tile">Discipline</li>
+                    <li class="tile">Growth</li>
+                    <li class="tile">Achievement</li>
+                    <li class="tile">Intelligence</li>
+                    <li class="tile">Progress</li>
+                    <li class="tile">Reliability</li>
                 </ul>
             </div>
 

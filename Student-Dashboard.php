@@ -111,11 +111,11 @@
                 <h4 form="student-form" value=""><?php echo $current_student_first_name; ?> <?php echo $current_student_middle_name; ?> <?php echo $current_student_last_name; ?></h4>
             </div>
 
-            <a href="portal-dashboard.php" id="btns">Portal Dashboard</a>
+            <a href="#.php" id="btns">Portal Dashboard</a>
             <a href="Register-Form.php" id="btns">New Registration</a>
-            <a href="payments-history.php" id="btns">Payments History</a>
+            <a href="#" id="btns">Payments History</a>
             <a href="student-results.php" id="btns">Examinations Results</a>
-            <a href="modules-information.php" id="btns">Modules Information</a>
+            <a href="Module-Manager-Student.php" id="btns">Modules Information</a>
             <a href="Welcome-page.php" id="btns">Logout</a>
 
         </aside>

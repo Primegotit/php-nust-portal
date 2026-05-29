@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 29, 2026 at 01:21 AM
+-- Generation Time: May 29, 2026 at 04:08 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -121,9 +121,36 @@ CREATE TABLE `tblregister` (
 
 INSERT INTO `tblregister` (`student_id`, `module_1`, `module_2`, `module_3`, `module_4`, `module_5`, `module_6`, `module_7`, `module_8`) VALUES
 ('08-990541B06', 'SCS2106 Web development', 'SCS2105 Calculus', 'SCS2106 Web development', 'SCS2105 Calculus', 'SCS2106 Web development', 'SCS2106 Web development', 'SCS2106 Web development', 'SCS2106 Web development'),
-('N02528961a', 'SCS2106 ', 'SCS2105 ', 'SCS2106 ', 'SCS2106 ', 'SCS2106 ', 'SCS2106 ', 'SCS2106 ', 'SCS2106 '),
+('N02528961a', 'SCS2106 Web development', 'SCS2105 Calculus', 'SCS2105 Calculus', 'SCS2105 Calculus', 'SCS2105 Calculus', 'SCS2105 Calculus', 'SCS2105 Calculus', 'SCS2105 Calculus'),
 ('N02528961Y', 'SCS2106 ', 'SCS2106 ', 'SCS2105 ', 'SCS2106 ', 'SCS2106 ', 'SCS2105 ', 'SCS2105 ', 'SCS2106 '),
 ('promise', 'SCS2106 Web development', 'SCS2105 Calculus', 'SCS2106 Web development', 'SCS2105 Calculus', 'SCS2105 Calculus', 'SCS2105 Calculus', 'SCS2105 Calculus', 'SCS2105 Calculus');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tblstaff`
+--
+
+CREATE TABLE `tblstaff` (
+  `staff_id` varchar(255) NOT NULL,
+  `first_name` varchar(255) NOT NULL,
+  `middle_name` varchar(255) NOT NULL,
+  `last_name` varchar(255) NOT NULL,
+  `gender` varchar(255) NOT NULL,
+  `dob` varchar(255) NOT NULL,
+  `department` varchar(255) NOT NULL,
+  `phone_number` varchar(255) NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tblstaff`
+--
+
+INSERT INTO `tblstaff` (`staff_id`, `first_name`, `middle_name`, `last_name`, `gender`, `dob`, `department`, `phone_number`, `type`, `password`) VALUES
+('N00', 'blaunx', 'blaunx', 'blaunx', 'male', 'asdlf', 'Computer Science', '08908932', 'Admin', 'N00'),
+('N111', 'Prime', 'Prime', 'Prime', 'Male', 'lkajdsf', 'Computer science', '0809', 'Lecturer', 'N11');
 
 -- --------------------------------------------------------
 
@@ -154,17 +181,14 @@ CREATE TABLE `tblstudents` (
 --
 
 INSERT INTO `tblstudents` (`national_id`, `first_name`, `middle_name`, `last_name`, `gender`, `dob`, `country`, `city`, `address`, `phone_number`, `email`, `department`, `degree`, `student_id`, `password`) VALUES
-('', '', '', '', 'male', '', '', '', '', '', '', '', '', '', '7errr30q'),
 ('08-99032412345', 'Black', 'M', 'Prime', 'male', '', 'Zimbabwe', 'Bulawayo', '3769 Magwegwe North', '0789880071', 'primevaldigitals@gmail.com', 'mathematics', 'master', 'CS648465', 'z2jzvmb7'),
 ('08-990324123aa', 'Promse', 'M', 'Prime', 'male', '2026-05-15', 'Zimbabwe', 'Bulawayo', '3769 Magwegwe North', '0789880071', 'primevaldigitals@gmail.com', 'computer_science', 'bachelor', 'promise', 'prime'),
 ('08-990324123aaaaaaaa', 'Promsefdsgfdgsfdg', 'mfdsgdfags', 'Primesdfgsd', 'male', '', 'Zimbabwe', 'Bulawayo', '3769 Magwegwe North', '0789880071', 'primevaldigitals@gmail.com', 'computer_science', 'master', 'CS589934', 'htk4es0l'),
-('08-990324123azzccdd', 'First', 'm', 'Last', 'male', '', 'Zimbabwe', 'Bulawayo', '3769 Magwegwe North', '0789880071asdf', 'primevaldigitals@asdfgmail.com', 'mathematics', 'bachelor', 'CS100948', 'ghoezcfe'),
+('08-990324123azzccdd', 'Promse', 'm', 'Prime', 'male', '2026-05-01', 'Zimbabwe', 'Bulawayo', '3769 Magwegwe North', '0789880071', 'primevaldigitals@gmail.com', 'physics', 'engineering', 'CS750188', 'i6k1xm5o'),
 ('08-990324123ss', 'Promse', 'm', 'Prime', 'male', '2026-05-09', 'Zimbabwe', 'Bulawayo', '3769 Magwegwe North', '0789880071', 'primevaldigitals@gmail.com', 'computer_science', 'master', 'CS958840', ''),
 ('08-990334534', 'Alex', 'M', 'Moyo', 'male', '', 'Zimbabwe', 'Bulawayo', '3769 Magwegwe North', '0789880071', 'primevaldigitals@gmail.com', 'mathematics', 'engineering', 'CS179144', ''),
 ('08-99541B06', 'Promse', 'M', 'Siafwiyo', 'male', '2026-05-15', 'Zimbabwe', 'Bulawayo', '3769 Magwegwe North', '0789880071', 'primevaldigitals@gmail.com', 'computer_science', 'master', 'blaunx', 'blaunx'),
-('3452', '2345ty', '1324', '1234', 'male', '2026-05-01', '1234', '1234', 'adg', 'asdg', 'sadg@gmail.com', 'physics', 'master', 'CS28203', 'cerjlbxg'),
-('90743897489', 'Promise', 'M', 'Siafwiyo', 'male', '2026-05-09', 'Zimbabwe', 'Bulawayo', '3769 Magwegwe North', '0789880071', 'primevaldigitals@gmail.com', 'mathematics', 'bachelor', 'CS926587', 'nsl43uoq'),
-('qw', 'qw', 'm', 'Prime', 'male', '', 'Zimbabwe', 'Bulawayo', '3769 Magwegwe North', '0789880071', 'primevaldigitals@gmail.com', 'computer_science', 'bachelor', 'CS548693', '');
+('3452', 'Promse', 'm', 'Prime', 'female', '2026-05-07', 'Zimbabwe', 'Bulawayo', '3769 Magwegwe North', '0789880071', 'primevaldigitals@gmail.com', 'computer_science', 'bachelor', 'CS907731', 'bjbf84ol');
 
 --
 -- Indexes for dumped tables
@@ -193,6 +217,12 @@ ALTER TABLE `tblmodules`
 --
 ALTER TABLE `tblregister`
   ADD PRIMARY KEY (`student_id`);
+
+--
+-- Indexes for table `tblstaff`
+--
+ALTER TABLE `tblstaff`
+  ADD PRIMARY KEY (`staff_id`);
 
 --
 -- Indexes for table `tblstudents`

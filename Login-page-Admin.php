@@ -12,7 +12,7 @@
 
         if(mysqli_num_rows($result) == 1) {
             session_start();
-            $_SESSION["student_id"] = $student_id;
+            $_SESSION["admin_id"] = $admin_id;
             header("Location: Admin-Dashboard.php");
             exit();
         } else {
@@ -25,7 +25,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Login Page - University Management System</title>
+    <title>Admin Login Page - University Management System</title>
     <link rel="stylesheet" href="Login-page.css">
     <link rel="stylesheet" href="global.css">
     <link rel="stylesheet" href="forms.css">
