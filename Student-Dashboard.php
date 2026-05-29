@@ -116,7 +116,7 @@
             <a href="#" id="btns">Payments History</a>
             <a href="student-results.php" id="btns">Examinations Results</a>
             <a href="Module-Manager-Student.php" id="btns">Modules Information</a>
-            <a href="Welcome-page.php" id="btns">Logout</a>
+            <a href="index.php" id="btns">Logout</a>
 
         </aside>
 
